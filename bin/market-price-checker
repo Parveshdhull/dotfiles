@@ -6,14 +6,8 @@ GROUP="market-alert"
 STOCK_API_URL="https://query1.finance.yahoo.com/v8/finance/chart"
 CRYPTO_API_URL="https://api.coincap.io/v2/assets"
 
-# Define assets with their respective configuration
-# Format: "ASSET_NAME|API_ENDPOINT|PRICE_PATH|THRESHOLD_HIGH|THRESHOLD_LOW"
-ASSETS=(
-    # "S&P 500|^GSPC|.chart.result[0].meta.regularMarketPrice|4500|4000"
-    "Nifty 50|^NSEI|.chart.result[0].meta.regularMarketPrice|25500|22200"
-    "Status|status|.data.priceUsd|0.032|0.015"
-    # "Ethereum|ethereum|.data.priceUsd|2000|1500"
-)
+# Path to the configuration file
+ASSETS="/run/agenix/service/market-price-checker/assets"
 
 # Function to send a message
 send_message() {
@@ -25,9 +19,9 @@ send_message() {
 }
 
 # Iterate over assets and check prices
-for asset in "${ASSETS[@]}"; do
-    # Parse asset details using pipe delimiter
-    IFS="|" read -r ASSET_NAME ASSET_ID PRICE_PATH THRESHOLD_HIGH THRESHOLD_LOW <<< "$asset"
+while IFS="|" read -r ASSET_NAME ASSET_ID PRICE_PATH THRESHOLD_HIGH THRESHOLD_LOW; do
+    # Skip lines that are comments or empty
+    [[ "$ASSET_NAME" =~ ^#.* || -z "$ASSET_NAME" ]] && continue
 
     # Determine API URL based on asset type
     if [[ "$ASSET_ID" == ^* ]]; then
@@ -46,4 +40,4 @@ for asset in "${ASSETS[@]}"; do
             send_message "$ASSET_NAME" "$PRICE"
         fi
     fi
-done
+done < "$ASSETS"
