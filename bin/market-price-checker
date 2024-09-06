@@ -1,0 +1,49 @@
+#!/bin/sh
+
+GROUP="market-alert"
+
+# Define common API URLs
+STOCK_API_URL="https://query1.finance.yahoo.com/v8/finance/chart"
+CRYPTO_API_URL="https://api.coincap.io/v2/assets"
+
+# Define assets with their respective configuration
+# Format: "ASSET_NAME|API_ENDPOINT|PRICE_PATH|THRESHOLD_HIGH|THRESHOLD_LOW"
+ASSETS=(
+    # "S&P 500|^GSPC|.chart.result[0].meta.regularMarketPrice|4500|4000"
+    "Nifty 50|^NSEI|.chart.result[0].meta.regularMarketPrice|25500|22200"
+    "Status|status|.data.priceUsd|0.032|0.015"
+    # "Ethereum|ethereum|.data.priceUsd|2000|1500"
+)
+
+# Function to send a message
+send_message() {
+    local asset_name=$1
+    local price=$2
+    local message="Alert: $asset_name Price: $price"
+    echo $message
+    ~/bin/signal-wrapper "$GROUP" "$message"
+}
+
+# Iterate over assets and check prices
+for asset in "${ASSETS[@]}"; do
+    # Parse asset details using pipe delimiter
+    IFS="|" read -r ASSET_NAME ASSET_ID PRICE_PATH THRESHOLD_HIGH THRESHOLD_LOW <<< "$asset"
+
+    # Determine API URL based on asset type
+    if [[ "$ASSET_ID" == ^* ]]; then
+        API_URL="${STOCK_API_URL}/${ASSET_ID}"
+    else
+        API_URL="${CRYPTO_API_URL}/${ASSET_ID}"
+    fi
+
+    # Fetch price
+    JSON_RESPONSE=$(curl -sL "$API_URL")
+    PRICE=$(echo "$JSON_RESPONSE" | jq -r "$PRICE_PATH")
+
+    # Check thresholds
+    if echo "$PRICE" | grep -qE '^[0-9]+(\.[0-9]+)?$'; then
+        if echo "$PRICE > $THRESHOLD_HIGH || $PRICE < $THRESHOLD_LOW" | bc -l | grep -q 1; then
+            send_message "$ASSET_NAME" "$PRICE"
+        fi
+    fi
+done
