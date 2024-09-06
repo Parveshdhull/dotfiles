@@ -40,7 +40,7 @@ def get_arguments():
 
 def send_message(message):
     global fails
-    exit_code = subprocess.call(["~/bin/signal-wrapper", "alertbot", message])
+    exit_code = subprocess.call(["/root/bin/signal-wrapper", "alertbot", message])
     if exit_code != 0:
         fails += [message]
 
