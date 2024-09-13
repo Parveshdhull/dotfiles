@@ -1,6 +1,6 @@
 {
   "accounts" : [ {
-    "path" : "../../../../../run/agenix/service/signal-cli/908642",
+    "path" : "../../../../../run/agenix/service/signal-cli/credentials",
     "environment" : "LIVE",
     "number" : "+918607216302",
     "uuid" : "03b283c8-7834-456d-b899-1108aa016507"
