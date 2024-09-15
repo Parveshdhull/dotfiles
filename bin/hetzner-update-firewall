@@ -1,0 +1,50 @@
+#!/bin/bash
+
+set -e
+
+if [ "$#" -ne 3 ]; then
+    printf "Usage: %s <firewall_id> <path_to_ip_file> <path_to_token_file>\n" "$0" >&2
+    exit 1
+fi
+
+FIREWALL_ID="$1"
+IP_FILE="$2"
+TOKEN_FILE="$3"
+LOG_FILE="/var/tmp/firewall_rules_${FIREWALL_ID}.json"
+
+API_TOKEN=$(<"$TOKEN_FILE")
+
+if [ ! -f "$IP_FILE" ]; then
+    printf "IP file not found: %s\n" "$IP_FILE" >&2
+    exit 1
+fi
+
+rules=$(awk '
+    BEGIN { print "[" }
+    {
+        ip=$1
+        for (i=2; i<=NF; i++) {
+            if (NR > 1 || i > 2) { printf "," }
+            printf("{\"direction\":\"in\",\"port\":\"%s\",\"protocol\":\"tcp\",\"source_ips\":[\"%s\"]}", $i, ip)
+        }
+    }
+    END { print "]" }
+' "$IP_FILE")
+
+if [ -f "$LOG_FILE" ] && [ "$rules" = "$(cat "$LOG_FILE")" ]; then
+    printf "Rules are up to date. No changes detected.\n"
+    exit 0
+fi
+
+update_response=$(curl -s -X POST "https://api.hetzner.cloud/v1/firewalls/${FIREWALL_ID}/actions/set_rules" \
+    -H "Authorization: Bearer $API_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d "{\"rules\":$rules}")
+
+if echo "$update_response" | jq -e '.error' > /dev/null; then
+    printf "Error updating firewall: %s\n" "$(echo "$update_response" | jq -r '.error.message')" >&2
+    exit 1
+fi
+
+echo "$rules" > "$LOG_FILE"
+printf "Firewall updated successfully!\n"
