@@ -5,19 +5,19 @@ CONTACT_FILE="/run/agenix/service/signal-cli/contact-info"
 
 # Function to find contact information by name
 find_contact_info() {
-    local name="$1"
-    grep "^$name|" "$CONTACT_FILE"
+	local name="$1"
+	grep "^$name|" "$CONTACT_FILE"
 }
 
 # Check for usage
 usage() {
-    echo "Usage: $0 NAME MESSAGE"
-    exit 1
+	echo "Usage: $0 NAME MESSAGE"
+	exit 1
 }
 
 # Ensure the correct number of arguments
 if [ "$#" -ne 2 ]; then
-    usage
+	usage
 fi
 
 # Extract arguments
@@ -26,21 +26,21 @@ MESSAGE="$2"
 
 # Ensure a contact name and message are provided
 if [ -z "$NAME" ]; then
-    echo "Error: Contact name is required"
-    usage
+	echo "Error: Contact name is required"
+	usage
 fi
 
 if [ -z "$MESSAGE" ]; then
-    echo "Error: Message is required"
-    usage
+	echo "Error: Message is required"
+	usage
 fi
 
 # Find contact information
 CONTACT_INFO=$(find_contact_info "$NAME")
 
 if [ -z "$CONTACT_INFO" ]; then
-    echo "Error: Contact name '$NAME' not found in $CONTACT_FILE"
-    exit 1
+	echo "Error: Contact name '$NAME' not found in $CONTACT_FILE"
+	exit 1
 fi
 
 # Extract contact ID/number and type
@@ -49,12 +49,12 @@ CONTACT_TYPE=$(echo "$CONTACT_INFO" | cut -d '|' -f3)
 
 # Send message based on contact type
 if [ "$CONTACT_TYPE" = "group" ]; then
-    echo "Sending message to group '$NAME' (ID: $CONTACT_ID)"
-    signal-cli send -g "$CONTACT_ID" -m "$MESSAGE"
+	echo "Sending message to group '$NAME' (ID: $CONTACT_ID)"
+	signal-cli send -g "$CONTACT_ID" -m "$MESSAGE"
 elif [ "$CONTACT_TYPE" = "user" ]; then
-    echo "Sending message to user '$NAME' (Contact: $CONTACT_ID)"
-    signal-cli send -m "$MESSAGE" "$CONTACT_ID"
+	echo "Sending message to user '$NAME' (Contact: $CONTACT_ID)"
+	signal-cli send -m "$MESSAGE" "$CONTACT_ID"
 else
-    echo "Error: Unknown contact type for '$NAME'"
-    exit 1
+	echo "Error: Unknown contact type for '$NAME'"
+	exit 1
 fi
