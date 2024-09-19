@@ -15,7 +15,7 @@ send_message() {
 	local price=$2
 	local message="Alert: $asset_name Price: $price"
 	echo $message
-	~/bin/signal-wrapper "$GROUP" "$message"
+	/home/monu/bin/signal-wrapper "$GROUP" "$message"
 }
 
 # Iterate over assets and check prices
