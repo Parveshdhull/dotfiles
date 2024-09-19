@@ -10,7 +10,7 @@ fi
 FIREWALL_ID="$1"
 IP_FILE="$2"
 TOKEN_FILE="$3"
-LOG_FILE="/var/tmp/firewall_rules_${FIREWALL_ID}.json"
+LOG_FILE="/tmp/firewall_rules_${FIREWALL_ID}.json"
 
 API_TOKEN=$(<"$TOKEN_FILE")
 
