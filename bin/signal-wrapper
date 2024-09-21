@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
 # Path to the local file containing contact information
 CONTACT_FILE="/run/agenix/service/signal-cli/contact-info"
