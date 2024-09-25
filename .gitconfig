@@ -1,0 +1,18 @@
+[init]
+	defaultBranch = master
+[user]
+	email = parvesh.dhullmonu@gmail.com
+	name = Parvesh Monu
+	signingkey = F399696520817DE9
+[core]
+	editor = vim
+[credential]
+	helper = store --file=/run/agenix/service/github/credentials
+[commit]
+	gpgsign = true
+[trailer "sign"]
+	key = Signed-off-by
+[gpg]
+	program = gpg2
+[http]
+	postBuffer = 157286400
