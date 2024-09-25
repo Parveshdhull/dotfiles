@@ -15,6 +15,7 @@ alias tt='mkdir -p tt && cd tt'
 alias c="cd -"
 
 # Clear and Display
+alias f="fuck"
 alias k="clear"
 alias p="pwd"
 alias t='trash'

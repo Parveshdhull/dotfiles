@@ -17,3 +17,5 @@ shopt -s extglob autocd globstar
 if [[ "$(hostname)" == "nova" ]]; then
 	source ~/.bash_nova
 fi
+
+eval "$(thefuck --alias)"
