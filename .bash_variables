@@ -1,0 +1,22 @@
+# User-specific binaries
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+# Go workspace and binaries
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
+# Android SDK configuration
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools"
+
+# Set default editor
+export EDITOR=vim
+export VISUAL="$EDITOR"  # Set VISUAL to the default editor
+
+# Configure GPG for TTY support
+export GPG_TTY=$(tty)
+
+# Configure history settings
+export HISTCONTROL="ignoreboth:erasedups"
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000

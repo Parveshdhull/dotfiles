@@ -1,0 +1,24 @@
+export PATH=$PATH":$HOME/.gem/ruby/2.7.0/bin:$HOME/go/bin:$HOME/Desktop/ArchFiles/ExtrasLinux/MyScripts/Linux/bin/:/home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Python/Mine/bin/"
+PATH="/home/parvesh_monu/perl5/bin${PATH:+:${PATH}}"
+export PATH
+PERL5LIB="/home/parvesh_monu/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+export PERL5LIB
+PERL_LOCAL_LIB_ROOT="/home/parvesh_monu/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+export PERL_LOCAL_LIB_ROOT
+PERL_MB_OPT="--install_base \"/home/parvesh_monu/perl5\""
+export PERL_MB_OPT
+PERL_MM_OPT="INSTALL_BASE=/home/parvesh_monu/perl5"
+export PERL_MM_OPT
+
+# flashlight
+export PATH="/home/parvesh_monu/.flashlight/bin:$PATH"
+
+# Alias
+alias d="cd ~/Desktop"
+alias ds="cd ~/Downloads"
+alias lb="cd /home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Linux/bin"
+alias pb="cd /home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Python/Mine/bin"
+alias tf="cd '/home/parvesh_monu/Desktop/ArchFiles/Extras/Text Files'"
+
+# Logs
+alias show_iplogs='cat /home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/Files/logs/ip_logs'
