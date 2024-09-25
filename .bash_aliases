@@ -4,6 +4,7 @@ alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9
 # Navigation
 alias z="cd ~/nebula/data/work/status-mobile && make-complete"
 alias x="cd ~/nebula/data/work/status-go && make-complete"
+alias df='cd ~/nebula/dotfiles'
 alias nc='cd ~/nebula/data/me/nixos-config/'
 alias ..="cd .."
 alias ...="cd ../.."
@@ -33,6 +34,7 @@ alias emc="emacsclient -n -c"
 
 # Searching and File Management
 alias grep='grep --color=auto'
+alias g='grep --color=auto'
 alias biggest="du -h --max-depth=1 | sort -h"
 alias :q="exit"
 
