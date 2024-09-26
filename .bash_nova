@@ -19,6 +19,7 @@ alias ds="cd ~/Downloads"
 alias lb="cd /home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Linux/bin"
 alias pb="cd /home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Python/Mine/bin"
 alias tf="cd '/home/parvesh_monu/Desktop/ArchFiles/Extras/Text Files'"
+alias sn="cd ~/nebula/dotfiles && stow -d ~/nebula/dotfiles -t ~/. -S ."
 
 # Logs
 alias show_iplogs='cat /home/parvesh_monu/Desktop/ArchFiles/ExtrasLinux/Files/logs/ip_logs'
