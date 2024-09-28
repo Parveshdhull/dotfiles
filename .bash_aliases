@@ -51,6 +51,7 @@ alias gc='git checkout'
 alias gcc='git commit -m'
 alias gd="git diff"
 alias gf="git fetch"
+alias gfs="git fetch status"
 alias gl="git log"
 alias gll="git log -p"
 alias gr="git restore"

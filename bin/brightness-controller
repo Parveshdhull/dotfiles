@@ -1,0 +1,30 @@
+#!/bin/sh
+
+LED_BRIGHTNESS="$HOME/.pconfig/.brightness"
+SCREEN="DP-3"
+
+[ ! -f "$LED_BRIGHTNESS" ] && echo "0" > "$LED_BRIGHTNESS"
+
+adjust_brightness() {
+    local change="$1"
+    local brightness
+    read -r brightness < "$LED_BRIGHTNESS"
+    brightness=$(echo "$brightness + $change" | bc -l)
+
+    if (( $(bc -l <<< "$brightness < 0") )); then
+        notify-send "Brightness Empty"
+        brightness="0"
+    elif (( $(bc -l <<< "$brightness > 1") )); then
+        notify-send "Brightness Full"
+        brightness="1"
+    fi
+
+    echo "$brightness" > "$LED_BRIGHTNESS"
+    xrandr --output "$SCREEN" --brightness "$brightness"
+}
+
+case "$1" in
+    increase) adjust_brightness 0.1 ;;
+    decrease) adjust_brightness -0.1 ;;
+    *) echo "Usage: brightness_new <increase/decrease>" ;;
+esac
