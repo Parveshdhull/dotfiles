@@ -1,7 +1,7 @@
 #!/bin/sh
 
 LED_BRIGHTNESS="$HOME/.pconfig/.brightness"
-SCREEN="DP-3"
+SCREEN="DP-2"
 
 [ ! -f "$LED_BRIGHTNESS" ] && echo "0" > "$LED_BRIGHTNESS"
 
