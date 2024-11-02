@@ -1,20 +1,14 @@
 #!/bin/bash
 
-ppaste() {
-    old_content=$(xsel -b)
-    xsel -b <<< "$1"
-    xdotool type --clearmodifiers "$(xsel -b)"
-    xsel -b <<< "$old_content"
-}
-
 # Declare an associative array for keywords and URLs
 declare -A url_map=(
-    ["youtube"]='https://youtube.com'
+    ["chat-gpt"]='https://chatgpt.com'
     ["google"]='https://google.com'
+    ["navigation"]='https://wix.github.io/react-native-navigation/docs/modal'
     ["status-mobile"]='https://github.com/status-im/status-mobile'
     ["status-go"]='https://github.com/status-im/status-go'
-    ["navigation"]='https://wix.github.io/react-native-navigation/docs/modal'
     ["reanimated"]='https://docs.swmansion.com/react-native-reanimated/docs/'
+    ["youtube"]='https://youtube.com'
 )
 
 # Check if an argument is provided
@@ -27,7 +21,8 @@ fi
 for keyword in "${!url_map[@]}"; do
     if [[ $1 == *"$keyword"* ]]; then
         sleep 1
-        ppaste "${url_map[$keyword]}"
+        xdotool type --clearmodifiers "${url_map[$keyword]}"
+        xdotool key Return
         exit 0
     fi
 done

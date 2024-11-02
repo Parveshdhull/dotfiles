@@ -1,8 +1,8 @@
 # i3 Config File (v4)
 
 # Variables
-set mod Mod4
-set $alt Mod1
+set $mod Mod1
+set $super Mod4
 set $main_display "DP-2"
 set $secondary_display "DP-3"
 set $ws1 "1. "
@@ -20,22 +20,50 @@ set $ws10 "10. "
 set $refresh_i3status killall -SIGUSR1 i3status
 
 ## Keybindings
-# Launch applications
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+$alt+q kill
-bindsym $mod+d exec dmenu_run
+# Chromium
+bindsym $super+a exec ~/bin/prowser
+bindsym $super+i exec chromium --guest --start-maximized
+bindsym $super+c exec chromium --profile-directory='Profile 24' --start-maximized
+bindsym $mod+$super+c exec chromium --profile-directory='Profile9' --start-maximized
+
+# Firefox
+bindsym $super+b exec firefox --profile /home/parvesh_monu/.mozilla/firefox/5v8j0lk6.Profile-Normal
+bindsym $mod+$super+p exec firefox --profile /home/parvesh_monu/.mozilla/firefox/rxv1pgjs.default-release-1
+bindsym $mod+$super+h exec firefox --profile /home/parvesh_monu/.mozilla/firefox/xil9u3bs.H1-Only
+bindsym $mod+$super+a exec ~/bin/frowser
+
+# Keys
+bindsym $super+t exec ~/bin/keys chat-gpt
+bindsym $super+g exec ~/bin/keys google
+bindsym $super+r exec ~/bin/keys navigation
+bindsym $super+2 exec ~/bin/keys status-mobile
+bindsym $super+3 exec ~/bin/keys status-go
+bindsym $super+y exec ~/bin/keys youtube
+
+# Others
+bindsym $super+q exec emacsclient -n -c
+bindsym $super+Return exec i3-sensible-terminal
+bindsym $mod+$super+q kill
+bindsym $super+d exec "rofi -combi-modi drun,run -show combi -modi combi"
+bindsym Print exec flameshot gui
+bindsym $super+e exec ~/bin/emoji-keyboard
+bindsym $super+o exec ~/bin/otpmenu
+bindsym $super+p exec passmenu
+bindsym $super+s exec /opt/sublime_text/sublime_text
+bindsym $mod+Tab workspace back_and_forth
 
 # Volume Control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 
 # Media Controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym F9 exec playerctl play-pause
+bindsym F10 exec playerctl next
+bindsym F8 exec playerctl previous
+
+# Sreen brightness controls
+bindsym F1 exec ~/bin/brightness-controller decrease
+bindsym F3 exec ~/bin/brightness-controller increase
 
 # Window Navigation
 bindsym $mod+n focus left
@@ -44,10 +72,10 @@ bindsym $mod+i focus up
 bindsym $mod+o focus right
 
 # Move Focused Window
-bindsym $mod+$alt+n move left
-bindsym $mod+$alt+e move down
-bindsym $mod+$alt+i move up
-bindsym $mod+$alt+o move right
+bindsym $mod+$super+n move left
+bindsym $mod+$super+e move down
+bindsym $mod+$super+i move up
+bindsym $mod+$super+o move right
 
 # Arrow Keys for Navigation
 bindsym $mod+Left focus left
@@ -55,10 +83,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+$alt+Left move left
-bindsym $mod+$alt+Down move down
-bindsym $mod+$alt+Up move up
-bindsym $mod+$alt+Right move right
+bindsym $mod+$super+Left move left
+bindsym $mod+$super+Down move down
+bindsym $mod+$super+Up move up
+bindsym $mod+$super+Right move right
 
 # Split and Fullscreen
 bindsym $mod+h split h
@@ -67,11 +95,11 @@ bindsym $mod+f fullscreen toggle
 
 # Layout Change
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+d layout tabbed
 bindsym $mod+t layout toggle split
 
 # Toggle Tiling / Floating
-bindsym $mod+$alt+space floating toggle
+bindsym $mod+$super+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Workspace Navigation
@@ -88,30 +116,41 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # Move focused container to workspace
-bindsym $mod+$alt+1 move container to workspace number $ws1
-bindsym $mod+$alt+2 move container to workspace number $ws2
-bindsym $mod+$alt+3 move container to workspace number $ws3
-bindsym $mod+$alt+4 move container to workspace number $ws4
-bindsym $mod+$alt+5 move container to workspace number $ws5
-bindsym $mod+$alt+6 move container to workspace number $ws6
-bindsym $mod+$alt+7 move container to workspace number $ws7
-bindsym $mod+$alt+8 move container to workspace number $ws8
-bindsym $mod+$alt+9 move container to workspace number $ws9
-bindsym $mod+$alt+0 move container to workspace number $ws10
+bindsym $mod+$super+1 move container to workspace number $ws1
+bindsym $mod+$super+2 move container to workspace number $ws2
+bindsym $mod+$super+3 move container to workspace number $ws3
+bindsym $mod+$super+4 move container to workspace number $ws4
+bindsym $mod+$super+5 move container to workspace number $ws5
+bindsym $mod+$super+6 move container to workspace number $ws6
+bindsym $mod+$super+7 move container to workspace number $ws7
+bindsym $mod+$super+8 move container to workspace number $ws8
+bindsym $mod+$super+9 move container to workspace number $ws9
+bindsym $mod+$super+0 move container to workspace number $ws10
 
 # Reload and Restart
-bindsym $mod+$alt+c reload
-bindsym $mod+$alt+r restart
-bindsym $mod+$alt+l exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+$super+d reload
+bindsym $mod+$super+r restart
+bindsym $mod+$super+l exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
 
-bindsym $mod+$alt+x --release exec xkill
+bindsym $mod+$super+x --release exec xkill
 
 ### Autostart Applications
 # Once
+## Required for i3
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+## Others
 exec --no-startup-id nm-applet
-exec picom
+exec --no-startup-id blueman-applet
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id picom
+exec --no-startup-id pulseaudio --start
+
+# Always
+# Wallpaper Setup
+exec_always --no-startup-id feh --bg-scale ~/Desktop/dotfiles/wallpaper/lost-in-space.png
+# Monitor Setup
+exec_always --no-startup-id xrandr --output $main_display --primary --mode 2560x1440 --pos 0x0 --rotate normal --output $secondary_display --mode 1920x1080 --pos 2560x360 --rotate normal --output HDMI-1 --off
 
 ## Window rules
 for_window [class=".*"] title_format "  %title"
@@ -149,12 +188,6 @@ for_window [class="Signal"] workspace $ws6
 for_window [class="Spotify"] workspace $ws7
 for_window [class="vlc"] workspace $ws8
 for_window [class="KeePassXC"] workspace $ws9
-
-# Always
-# Wallpaper Setup
-exec_always feh --bg-scale ~/Desktop/dotfiles/wallpaper/lost-in-space.png
-# Monitor Setup
- exec_always xrandr --output $main_display --primary --mode 2560x1440 --pos 0x0 --rotate normal --output $secondary_display --mode 1920x1080 --pos 2560x360 --rotate normal --output HDMI-1 --off
 
 ## Modes
 # Resize Mode
