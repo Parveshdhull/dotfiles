@@ -1,7 +1,8 @@
 # i3 Config File (v4)
 
 # Variables
-set $mod Mod4
+set mod Mod4
+set $alt Mod1
 set $main_display "DP-2"
 set $secondary_display "DP-3"
 set $ws1 "1. "
@@ -21,7 +22,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 ## Keybindings
 # Launch applications
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+q kill
+bindsym $mod+$alt+q kill
 bindsym $mod+d exec dmenu_run
 
 # Volume Control
@@ -43,10 +44,10 @@ bindsym $mod+i focus up
 bindsym $mod+o focus right
 
 # Move Focused Window
-bindsym $mod+Shift+n move left
-bindsym $mod+Shift+e move down
-bindsym $mod+Shift+i move up
-bindsym $mod+Shift+o move right
+bindsym $mod+$alt+n move left
+bindsym $mod+$alt+e move down
+bindsym $mod+$alt+i move up
+bindsym $mod+$alt+o move right
 
 # Arrow Keys for Navigation
 bindsym $mod+Left focus left
@@ -54,10 +55,10 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+$alt+Left move left
+bindsym $mod+$alt+Down move down
+bindsym $mod+$alt+Up move up
+bindsym $mod+$alt+Right move right
 
 # Split and Fullscreen
 bindsym $mod+h split h
@@ -70,7 +71,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+t layout toggle split
 
 # Toggle Tiling / Floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+$alt+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Workspace Navigation
@@ -87,23 +88,23 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+$alt+1 move container to workspace number $ws1
+bindsym $mod+$alt+2 move container to workspace number $ws2
+bindsym $mod+$alt+3 move container to workspace number $ws3
+bindsym $mod+$alt+4 move container to workspace number $ws4
+bindsym $mod+$alt+5 move container to workspace number $ws5
+bindsym $mod+$alt+6 move container to workspace number $ws6
+bindsym $mod+$alt+7 move container to workspace number $ws7
+bindsym $mod+$alt+8 move container to workspace number $ws8
+bindsym $mod+$alt+9 move container to workspace number $ws9
+bindsym $mod+$alt+0 move container to workspace number $ws10
 
 # Reload and Restart
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+l exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+$alt+c reload
+bindsym $mod+$alt+r restart
+bindsym $mod+$alt+l exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
 
-bindsym $mod+Shift+x --release exec xkill
+bindsym $mod+$alt+x --release exec xkill
 
 ### Autostart Applications
 # Once
@@ -130,6 +131,7 @@ assign [class="Chromium"] $ws1
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
 assign [class="Emacs"] $ws4
+assign [class="Subl"] $ws4
 assign [class="Terminator"] $ws5
 assign [class="Signal"] $ws6
 assign [class="Spotify"] $ws7
@@ -141,6 +143,7 @@ for_window [class="Chromium"] workspace $ws1
 for_window [class="firefox"] workspace $ws2
 for_window [class="discord"] workspace $ws3
 for_window [class="Emacs"] workspace $ws4
+for_window [class="Subl"] workspace $ws4
 for_window [class="Terminator"] workspace $ws5
 for_window [class="Signal"] workspace $ws6
 for_window [class="Spotify"] workspace $ws7
