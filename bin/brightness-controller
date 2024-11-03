@@ -1,5 +1,6 @@
 #!/bin/sh
 
+mkdir -p ~/.pconfig
 LED_BRIGHTNESS="$HOME/.pconfig/.brightness"
 SCREEN="DP-2"
 

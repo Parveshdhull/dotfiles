@@ -16,21 +16,18 @@ set $ws8 "8. "
 set $ws9 "9. "
 set $ws10 "10. "
 
-# Functions
-set $refresh_i3status killall -SIGUSR1 i3status
-
 ## Keybindings
 # Chromium
-bindsym $alt+a exec --no-startup-id ~/bin/prowser
-bindsym $alt+i exec --no-startup-id chromium --guest --start-maximized
-bindsym $alt+c exec --no-startup-id chromium --profile-directory='Profile 24' --start-maximized
-bindsym $mod+$alt+c exec --no-startup-id chromium --profile-directory='Profile9' --start-maximized
+bindsym $alt+a exec --no-startup-id ~/bin/prowser; workspace $ws1
+bindsym $alt+i exec --no-startup-id chromium --guest --start-maximized; workspace $ws1
+bindsym $alt+c exec --no-startup-id chromium --profile-directory='Profile 24' --start-maximized; workspace $ws1
+bindsym $mod+$alt+c exec --no-startup-id chromium --profile-directory='Profile9' --start-maximized; workspace $ws1
 
 # Firefox
-bindsym $alt+b exec --no-startup-id firefox --profile /home/parvesh_monu/.mozilla/firefox/5v8j0lk6.Profile-Normal
-bindsym $mod+$alt+p exec --no-startup-id firefox --profile /home/parvesh_monu/.mozilla/firefox/rxv1pgjs.default-release-1
-bindsym $mod+$alt+h exec --no-startup-id firefox --profile /home/parvesh_monu/.mozilla/firefox/xil9u3bs.H1-Only
-bindsym $mod+$alt+a exec --no-startup-id ~/bin/frowser
+bindsym $mod+$alt+b exec --no-startup-id firefox --profile /home/parvesh_monu/.mozilla/firefox/5v8j0lk6.Profile-Normal; workspace $ws2
+bindsym $mod+$alt+p exec --no-startup-id firefox --profile /home/parvesh_monu/.mozilla/firefox/rxv1pgjs.default-release-1; workspace $ws2
+bindsym $mod+$alt+h exec --no-startup-id firefox --profile /home/parvesh_monu/.mozilla/firefox/xil9u3bs.H1-Only; workspace $ws2
+bindsym $mod+$alt+a exec --no-startup-id ~/bin/frowser; workspace $ws1
 
 # Keys
 bindsym $mod+$alt+t exec --no-startup-id ~/bin/keys chat-gpt
@@ -39,24 +36,28 @@ bindsym $mod+$alt+s exec --no-startup-id ~/bin/keys status-mobile
 bindsym $mod+$alt+` exec --no-startup-id ~/bin/keys status-go
 bindsym $mod+$alt+y exec --no-startup-id ~/bin/keys youtube
 
-# Others
-bindsym $mod+q exec --no-startup-id emacsclient -n -c
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
-bindsym $mod+$alt+q kill
-bindsym $mod+d exec --no-startup-id "rofi -combi-modi drun,run -show combi -modi combi"
+# Rofi
+bindsym $mod+Return exec --no-startup-id "rofi -combi-modi drun,run -show combi -modi combi"
 bindsym $mod+$alt+d exec --no-startup-id rofi -modi combi -combi-modi window -show combi
-bindsym Print exec --no-startup-id flameshot gui
-bindsym $alt+e exec --no-startup-id ~/bin/emoji-keyboard
 bindsym $alt+o exec --no-startup-id ~/bin/otpmenu
 bindsym $alt+p exec --no-startup-id passmenu
-bindsym $alt+s exec --no-startup-id /opt/sublime_text/sublime_text
+bindsym $alt+b exec ~/bin/bluetooth-toggle
+bindsym $alt+d exec ~/bin/switch-audio && pkill -SIGRTMIN+11 i3blocks
+
+# Others
+bindsym $mod+q exec --no-startup-id emacsclient -n -c; workspace $ws4
+bindsym $mod+space exec --no-startup-id i3-sensible-terminal; workspace $ws5
+bindsym $mod+$alt+q kill
+bindsym Print exec --no-startup-id flameshot gui
+bindsym $alt+e exec --no-startup-id ~/bin/emoji-keyboard && pkill -SIGRTMIN+12 i3blocks
+bindsym $alt+s exec --no-startup-id /opt/sublime_text/sublime_text; workspace $ws4
 bindsym $mod+$alt+Tab workspace prev
 bindsym $alt+Tab workspace next
 bindsym $mod+$alt+x --release exec --no-startup-id xkill
 
 # Volume Control
-bindsym F12 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym F11 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym F12 exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
+bindsym F11 exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
 
 # Media Controls
 bindsym F9 exec --no-startup-id playerctl play-pause
@@ -102,7 +103,7 @@ bindsym $mod+t layout toggle split
 
 # Toggle Tiling / Floating
 bindsym $mod+$alt+space floating toggle
-bindsym $mod+space focus mode_toggle
+bindsym $alt+space focus mode_toggle
 
 # Workspace Navigation
 # Switch to workspace
@@ -143,7 +144,6 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom
-exec --no-startup-id pulseaudio --start
 
 # Always
 # Wallpaper Setup
@@ -169,7 +169,7 @@ assign [class="Chromium"] $ws1
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
 assign [class="Emacs"] $ws4
-assign [class="Subl"] $ws4
+assign [class="Sublime_text"] $ws4
 assign [class="Terminator"] $ws5
 assign [class="Signal"] $ws6
 assign [class="Spotify"] $ws7
@@ -181,7 +181,7 @@ for_window [class="Chromium"] workspace $ws1
 for_window [class="firefox"] workspace $ws2
 for_window [class="discord"] workspace $ws3
 for_window [class="Emacs"] workspace $ws4
-for_window [class="Subl"] workspace $ws4
+for_window [class="Sublime_text"] workspace $ws4
 for_window [class="Terminator"] workspace $ws5
 for_window [class="Signal"] workspace $ws6
 for_window [class="Spotify"] workspace $ws7
@@ -235,10 +235,10 @@ set $white_text_color #ffffff
 
 # Bar Configuration
 bar {
-    height 30
+    height 35
     position top
     font pango:NotoSans-Regular 18
-    # status_command i3status
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
     output $main_display
     colors {
         background          $bg_color

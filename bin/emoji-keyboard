@@ -1,6 +1,7 @@
 #!/bin/sh
 
-TOGGLE=$HOME/.emoji
+mkdir -p ~/.pconfig
+TOGGLE=$HOME/.pconfig/.emoji
 
 # Emoji Keyboard
 if [ ! -e $TOGGLE ]; then
