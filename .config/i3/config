@@ -33,7 +33,7 @@ bindsym $mod+$alt+a exec --no-startup-id ~/bin/frowser; workspace $ws1
 bindsym $mod+$alt+t exec --no-startup-id ~/bin/keys chat-gpt
 bindsym $mod+$alt+g exec --no-startup-id ~/bin/keys google
 bindsym $mod+$alt+s exec --no-startup-id ~/bin/keys status-mobile
-bindsym $mod+$alt+` exec --no-startup-id ~/bin/keys status-go
+bindsym $mod+$alt+f exec --no-startup-id ~/bin/keys status-go
 bindsym $mod+$alt+y exec --no-startup-id ~/bin/keys youtube
 
 # Rofi
@@ -56,8 +56,11 @@ bindsym $alt+Tab workspace next
 bindsym $mod+$alt+x --release exec --no-startup-id xkill
 
 # Volume Control
-bindsym F12 exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
-bindsym F11 exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
+bindsym F11 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks
+bindsym F12 exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
 
 # Media Controls
 bindsym F9 exec --no-startup-id playerctl play-pause
@@ -104,6 +107,7 @@ bindsym $mod+t layout toggle split
 # Toggle Tiling / Floating
 bindsym $mod+$alt+space floating toggle
 bindsym $alt+space focus mode_toggle
+bindsym $mod+Tab sticky toggle
 
 # Workspace Navigation
 # Switch to workspace
@@ -144,15 +148,17 @@ exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom
+exec --no-startup-id stretchly
 
 # Always
 # Wallpaper Setup
-exec_always --no-startup-id feh --bg-scale ~/Desktop/dotfiles/wallpaper/lost-in-space.png
+exec_always --no-startup-id feh --bg-scale ~/nebula/dotfiles/wallpaper/lost-in-space.png
 # Monitor Setup
 exec_always --no-startup-id xrandr --output $main_display --primary --mode 2560x1440 --pos 0x0 --rotate normal --output $secondary_display --mode 1920x1080 --pos 2560x360 --rotate normal --output HDMI-1 --off
 
 ## Window rules
 for_window [class=".*"] title_format "  %title"
+for_window [title=".*Emulator.*"] floating enable
 workspace $ws1 output $main_display
 workspace $ws2 output $main_display
 workspace $ws3 output $main_display
