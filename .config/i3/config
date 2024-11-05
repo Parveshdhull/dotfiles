@@ -5,16 +5,16 @@ set $mod Mod4
 set $alt Mod1
 set $main_display "DP-2"
 set $secondary_display "DP-3"
-set $ws1 "1. "
-set $ws2 "2. "
-set $ws3 "3. "
-set $ws4 "4. "
-set $ws5 "5. "
-set $ws6 "6. "
-set $ws7 "7. "
-set $ws8 "8. "
-set $ws9 "9. "
-set $ws10 "10. "
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
+set $ws10 "10 "
 
 ## Keybindings
 # Chromium
@@ -252,9 +252,10 @@ set $transparent_color #00000000
 bar {
     height 35
     position top
-    font pango:NotoSans-Regular 18
+    font pango:NotoSans-Regular 20
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     output $main_display
+    strip_workspace_numbers yes
     colors {
         background          $bg_color
         focused_workspace   $bg_color $bg_color $focused_text_color

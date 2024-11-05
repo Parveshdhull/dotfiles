@@ -28,7 +28,7 @@ alias l.='ls -d .* --color=auto'
 alias j='tree .'
 
 # Messaging and Editor
-alias msg=gxmessage
+alias msg='zenity --info --text'
 alias vi=vim
 alias at="(echo 'export DISPLAY=:0.0'; cat) | at"
 alias emc="emacsclient -n -c"
