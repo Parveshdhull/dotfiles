@@ -63,10 +63,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
 
 # Media Controls
-bindsym XF86AudioPause exec playerctl --list-all 2>&1 | grep -q "No player" && spotify || playerctl play-pause
+bindsym XF86AudioPause exec playerctl --list-all 2>&1 | grep -q "No player" && spotify || playerctl play-pause || spotify
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-bindsym F9 exec --no-startup-id playerctl --list-all 2>&1 | grep -q "No player" && spotify || playerctl play-pause
+bindsym F9 exec --no-startup-id playerctl --list-all 2>&1 | grep -q "No player" && spotify || playerctl play-pause || spotify
 bindsym F10 exec --no-startup-id playerctl next
 bindsym F8 exec --no-startup-id playerctl previous
 
@@ -141,11 +141,13 @@ bindsym $mod+$alt+0 move container to workspace number $ws10
 bindsym $mod+$alt+u reload
 bindsym $mod+$alt+r restart
 
-### Autostart Applications
+### Autstart Applications
 # Once
 ## Required for i3
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Watchers
+exec playerctl --follow metadata title | while read title; do pkill -SIGRTMIN+13 i3blocks; echo "- $title"; done
 ## Others
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
