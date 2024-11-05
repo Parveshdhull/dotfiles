@@ -50,7 +50,7 @@ bindsym $mod+space exec --no-startup-id i3-sensible-terminal; workspace $ws5
 bindsym $mod+$alt+q kill
 bindsym Print exec --no-startup-id flameshot gui
 bindsym $alt+e exec --no-startup-id ~/bin/emoji-keyboard && pkill -SIGRTMIN+12 i3blocks
-bindsym $alt+s exec --no-startup-id /opt/sublime_text/sublime_text; workspace $ws4
+bindsym $alt+s exec --no-startup-id /opt/sublime_text/sublime_text
 bindsym $mod+$alt+Tab workspace prev
 bindsym $alt+Tab workspace next
 bindsym $mod+$alt+x --release exec --no-startup-id xkill
@@ -63,7 +63,10 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -SIGRTMIN+10 i3blocks
 
 # Media Controls
-bindsym F9 exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec playerctl --list-all 2>&1 | grep -q "No player" && spotify || playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym F9 exec --no-startup-id playerctl --list-all 2>&1 | grep -q "No player" && spotify || playerctl play-pause
 bindsym F10 exec --no-startup-id playerctl next
 bindsym F8 exec --no-startup-id playerctl previous
 
@@ -149,6 +152,10 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id picom
 exec --no-startup-id stretchly
+exec --no-startup-id redshift -P -O 5000
+exec --no-startup-id playerctld daemon
+exec --no-startup-id trash ~/.pconfig/.emoji
+exec --no-startup-id trash-empty 3
 
 # Always
 # Wallpaper Setup
@@ -168,14 +175,13 @@ workspace $ws6 output $main_display
 workspace $ws7 output $main_display
 workspace $ws8 output $main_display
 workspace $ws9 output $main_display
-workspace $ws10 output $secondary_display
+workspace $ws10 output $secondary_display $main_display
 
 # Workspace Assignment
 assign [class="Chromium"] $ws1
 assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
 assign [class="Emacs"] $ws4
-assign [class="Sublime_text"] $ws4
 assign [class="Terminator"] $ws5
 assign [class="Signal"] $ws6
 assign [class="Spotify"] $ws7
@@ -187,12 +193,12 @@ for_window [class="Chromium"] workspace $ws1
 for_window [class="firefox"] workspace $ws2
 for_window [class="discord"] workspace $ws3
 for_window [class="Emacs"] workspace $ws4
-for_window [class="Sublime_text"] workspace $ws4
 for_window [class="Terminator"] workspace $ws5
 for_window [class="Signal"] workspace $ws6
 for_window [class="Spotify"] workspace $ws7
 for_window [class="vlc"] workspace $ws8
 for_window [class="KeePassXC"] workspace $ws9
+focus_on_window_activation focus
 
 ## Modes
 # Resize Mode
@@ -238,6 +244,7 @@ set $focused_text_color #81a1c1
 set $unfocused_text_color #4c566a
 set $red_text_color #bf616a
 set $white_text_color #ffffff
+set $transparent_color #00000000
 
 # Bar Configuration
 bar {
@@ -258,7 +265,7 @@ bar {
 
 # Window Colors
 gaps inner 5
-client.focused          $bg_color #2e3440 $focused_text_color
-client.unfocused        $bg_color $bg_color $unfocused_text_color
-client.focused_inactive $bg_color $bg_color $unfocused_text_color
-client.urgent           #900000 #900000 $white_text_color
+client.focused          $bg_color #2e3440 $focused_text_color $transparent_color
+client.unfocused        $bg_color $bg_color $unfocused_text_color $transparent_color
+client.focused_inactive $bg_color $bg_color $unfocused_text_color $transparent_color
+client.urgent           #900000 #900000 $white_text_color $transparent_color
