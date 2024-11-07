@@ -20,3 +20,6 @@ export GPG_TTY=$(tty)
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
+
+# Set ~/.config for consistent config storage
+export XDG_CONFIG_HOME="$HOME/.config"
