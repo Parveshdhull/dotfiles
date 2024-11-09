@@ -1,0 +1,82 @@
+[global_config]
+  inactive_color_offset = 0.9024390243902439
+  case_sensitive = False
+  invert_search = True
+[keybindings]
+  switch_to_tab_1 = <Alt>KP_End
+  switch_to_tab_2 = <Primary><Super>2
+[profiles]
+  [[default]]
+    font = Iosevka Term Light 20
+    scrollback_infinite = True
+    use_system_font = False
+    copy_on_selection = True
+  [[New Profile 2]]
+  [[Nerd]]
+    font = Sans Bold 10
+    scrollback_infinite = True
+    use_system_font = False
+    copy_on_selection = True
+  [[status]]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:0
+      maximised = True
+      fullscreen = False
+      size = 1366, 712
+      title = parvesh_monu@parveshdhull:~/Desktop
+      last_active_term = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
+      last_active_window = True
+    [[[terminal1]]]
+      type = Terminal
+      parent = child0
+      order = 0
+      profile = default
+      uuid = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
+  [[status]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 0:0
+      maximised = True
+      fullscreen = False
+      size = 1920, 1020
+      title = parvesh_monu@parveshdhull:~/Desktop
+      last_active_term = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 322
+      ratio = 0.31724137931034485
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
+    [[[child3]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 342
+      ratio = 0.49709302325581395
+    [[[terminal4]]]
+      type = Terminal
+      parent = child3
+      order = 0
+      profile = default
+      uuid = d449cc7f-d424-4a10-8577-9942f38f72ef
+    [[[terminal5]]]
+      type = Terminal
+      parent = child3
+      order = 1
+      profile = default
+      uuid = 9e212e26-c0a9-40eb-9b4f-b67a0223bd00
+[plugins]
