@@ -82,5 +82,5 @@ alias scan='scanimage -po "$(date +%s).png"'
 
 # Nix
 alias ns='nix-shell'
-alias bl='sudo nixos-rebuild switch --flake .#luna --target-host monu@luna'
-alias ba='sudo nixos-rebuild switch --flake .#altair --target-host monu@altair'
+alias bl='nixos-rebuild switch --flake .#luna --target-host monu@luna'
+alias ba='nixos-rebuild switch --flake .#altair --target-host monu@altair'
