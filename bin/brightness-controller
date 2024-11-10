@@ -1,10 +1,12 @@
-#!/bin/sh
+#!/run/current-system/sw/bin/bash
 
-mkdir -p ~/.pconfig
-LED_BRIGHTNESS="$HOME/.pconfig/.brightness"
+mkdir -p ~/.config/pconfig
+LED_BRIGHTNESS="$HOME/.config/pconfig/.brightness"
 SCREEN="DP-2"
 
-[ ! -f "$LED_BRIGHTNESS" ] && echo "0" > "$LED_BRIGHTNESS"
+if [ ! -s "$LED_BRIGHTNESS" ]; then
+    echo "0" > "$LED_BRIGHTNESS"
+fi
 
 adjust_brightness() {
     local change="$1"

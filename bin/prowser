@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/run/current-system/sw/bin/bash
 
 if [[ $1 ]]; then
   s=$1

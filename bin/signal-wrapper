@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/run/current-system/sw/bin/bash
 set -euo pipefail
 
 # Path to the local file containing contact information

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/run/current-system/sw/bin/bash
 
 contains () { [[ "$1" =~ (^|[[:space:]])"$2"($|[[:space:]]) ]]; }
 
