@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 # Declare an associative array for keywords and URLs
 declare -A url_map=(

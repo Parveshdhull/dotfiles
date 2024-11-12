@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/env bash
 
 if [[ $1 ]]; then
   find . -type f | shuf | sxiv -ibf -S $1
