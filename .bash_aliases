@@ -4,8 +4,8 @@ alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9
 # Navigation
 alias z="cd ~/nebula/data/work/status-mobile && make-complete"
 alias x="cd ~/nebula/data/work/status-go && make-complete"
-alias df='cd ~/nebula/sync-box/dotfiles'
-alias nc='cd ~/nebula/sync-box/nixos-config'
+alias df='cd ~/nebula/dotfiles'
+alias nc='cd ~/nebula/nixos-config'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
