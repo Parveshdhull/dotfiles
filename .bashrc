@@ -13,9 +13,4 @@ eval $(dircolors ~/.dircolors)
 # Enable useful shell options
 shopt -s extglob autocd globstar
 
-# If the hostname is nova, import .bash_nova
-if [[ "$(hostname)" == "nova" ]]; then
-	source ~/.bash_nova
-fi
-
 eval "$(thefuck --alias)"

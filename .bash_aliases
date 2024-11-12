@@ -4,8 +4,8 @@ alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9
 # Navigation
 alias z="cd ~/nebula/data/work/status-mobile && make-complete"
 alias x="cd ~/nebula/data/work/status-go && make-complete"
-alias df='cd ~/nebula/dotfiles'
-alias nc='cd ~/nebula/data/me/nixos-config/'
+alias df='cd ~/nebula/sync-box/dotfiles'
+alias nc='cd ~/nebula/sync-box/nixos-config'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -89,3 +89,10 @@ alias ba='sudo nixos-rebuild switch --flake .#altair --target-host monu@altair'
 # Security
 alias fj='firejail --noprofile bash'
 alias sp='nix-shell --pure -p '
+
+# Desktop
+alias d="cd ~/Desktop"
+alias ds="cd ~/Downloads"
+alias lb="cd /home/monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Linux/bin"
+alias pb="cd /home/monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Python/Mine/bin"
+alias tf="cd '/home/monu/Desktop/ArchFiles/Extras/Text Files'"
