@@ -1,17 +1,18 @@
 #!/run/current-system/sw/bin/bash
 
-usage(){
-	echo "Usage: ghdump directory_name"
-	exit 0
+usage() {
+  echo "Usage: ghdump directory_name"
+  exit 0
 }
 
 BASE=.git
-if [[ "$1"  = "-h" ]]
-then
-	usage
-elif [[ "$1" ]]
-then
-	BASE=$1/.git
+if [[ "$1" = "-h" ]]; then
+  usage
+elif [[ "$1" ]]; then
+  BASE=$1/.git
 fi
 
-{ find $BASE/objects/pack/ -name "*.idx"|while read i;do git show-index < "$i"|awk '{print $2}';done;find $BASE/objects/ -type f|grep -v '/pack/'|awk -F'/' '{print $(NF-1)$NF}'; }|while read o;do git -C $BASE cat-file -p $o;done
+{
+  find $BASE/objects/pack/ -name "*.idx" | while read i; do git show-index <"$i" | awk '{print $2}'; done
+  find $BASE/objects/ -type f | grep -v '/pack/' | awk -F'/' '{print $(NF-1)$NF}'
+} | while read o; do git -C $BASE cat-file -p $o; done

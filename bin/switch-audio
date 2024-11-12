@@ -2,15 +2,15 @@
 
 sink_options=""
 while read -r line; do
-    index=$(echo "$line" | awk '{print $1}')
-    sink_name=$(echo "$line" | awk '{print $2}')
-    description=$(pactl list sinks | grep -A 15 "Name: $sink_name" | grep "Description:" | cut -d ' ' -f2-)
-    sink_options+="$index: $description\n"
+  index=$(echo "$line" | awk '{print $1}')
+  sink_name=$(echo "$line" | awk '{print $2}')
+  description=$(pactl list sinks | grep -A 15 "Name: $sink_name" | grep "Description:" | cut -d ' ' -f2-)
+  sink_options+="$index: $description\n"
 done < <(pactl list short sinks)
 
 selected=$(echo -e "$sink_options" | rofi -dmenu -p "Select Audio Sink:")
 sink_index=$(echo "$selected" | awk -F ': ' '{print $1}')
 echo $sink_index
 if [[ -n "$sink_index" ]]; then
-    pactl set-default-sink "$sink_index"
+  pactl set-default-sink "$sink_index"
 fi

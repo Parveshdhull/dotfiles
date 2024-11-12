@@ -5,29 +5,29 @@ LED_BRIGHTNESS="$HOME/.config/pconfig/.brightness"
 SCREEN="DP-2"
 
 if [ ! -s "$LED_BRIGHTNESS" ]; then
-    echo "0" > "$LED_BRIGHTNESS"
+  echo "0" >"$LED_BRIGHTNESS"
 fi
 
 adjust_brightness() {
-    local change="$1"
-    local brightness
-    read -r brightness < "$LED_BRIGHTNESS"
-    brightness=$(echo "$brightness + $change" | bc -l)
+  local change="$1"
+  local brightness
+  read -r brightness <"$LED_BRIGHTNESS"
+  brightness=$(echo "$brightness + $change" | bc -l)
 
-    if (( $(bc -l <<< "$brightness < 0") )); then
-        notify-send "Brightness Empty"
-        brightness="0"
-    elif (( $(bc -l <<< "$brightness > 1") )); then
-        notify-send "Brightness Full"
-        brightness="1"
-    fi
+  if (($(bc -l <<<"$brightness < 0"))); then
+    notify-send "Brightness Empty"
+    brightness="0"
+  elif (($(bc -l <<<"$brightness > 1"))); then
+    notify-send "Brightness Full"
+    brightness="1"
+  fi
 
-    echo "$brightness" > "$LED_BRIGHTNESS"
-    xrandr --output "$SCREEN" --brightness "$brightness"
+  echo "$brightness" >"$LED_BRIGHTNESS"
+  xrandr --output "$SCREEN" --brightness "$brightness"
 }
 
 case "$1" in
-    increase) adjust_brightness 0.1 ;;
-    decrease) adjust_brightness -0.1 ;;
-    *) echo "Usage: brightness_new <increase/decrease>" ;;
+increase) adjust_brightness 0.1 ;;
+decrease) adjust_brightness -0.1 ;;
+*) echo "Usage: brightness_new <increase/decrease>" ;;
 esac

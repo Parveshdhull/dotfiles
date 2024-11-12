@@ -7,13 +7,13 @@ else
 fi
 
 if [[ $s = '' ]]; then
-	s="https://www.google.com"
+  s="https://www.google.com"
 fi
 
 if [[ $s == "www"* ]] || [[ $s == "http"* ]] || [[ $s == "com"* ]]; then
-	firefox --new-tab $s > /dev/null 2>&1 &
-	disown
+  firefox --new-tab $s >/dev/null 2>&1 &
+  disown
 else
-	firefox --new-tab https://www.google.com/search?q="$s" > /dev/null 2>&1 &
-	disown
+  firefox --new-tab https://www.google.com/search?q="$s" >/dev/null 2>&1 &
+  disown
 fi

@@ -7,13 +7,13 @@ else
 fi
 
 if [[ $s = '' ]]; then
-	s="https://www.google.com"
+  s="https://www.google.com"
 fi
 
 if [[ $s == "www"* ]] || [[ $s == "http"* ]] || [[ $s == "com"* ]]; then
-	chromium --guest "$s" --start-maximized > /dev/null 2>&1 &
-	disown
+  chromium --guest "$s" --start-maximized >/dev/null 2>&1 &
+  disown
 else
-	chromium --guest "? $s" --start-maximized > /dev/null 2>&1 &
-	disown
+  chromium --guest "? $s" --start-maximized >/dev/null 2>&1 &
+  disown
 fi
