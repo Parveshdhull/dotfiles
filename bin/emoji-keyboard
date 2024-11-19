@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 mkdir -p ~/.config/pconfig
 TOGGLE=$HOME/.config/pconfig/.emoji

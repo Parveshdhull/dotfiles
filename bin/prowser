@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 if [[ $1 ]]; then
   s=$1
 else
-  s=$(xclip -o -selection primary)
+  s=$(xclip -o)
 fi
 
 if [[ $s = '' ]]; then

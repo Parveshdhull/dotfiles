@@ -1,0 +1,11 @@
+#!/run/current-system/sw/bin/bash
+
+if [[ $1 ]]; then
+  s=$1
+else
+  s=$(xclip -o)
+fi
+
+if [[ $s ]]; then
+    qrencode $s -o /tmp/pqr && sxiv /tmp/pqr
+fi

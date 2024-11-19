@@ -97,5 +97,6 @@ alias lb="cd /home/monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Linux/bin"
 alias pb="cd /home/monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Python/Mine/bin"
 alias tf="cd '/home/monu/Desktop/ArchFiles/Extras/Text Files'"
 
-# Bash
+# Misc
 alias format="shfmt -i 2 -w "
+alias xo=xdg-open

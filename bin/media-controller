@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 # Start Spotify if no media player is running
 if playerctl --list-all 2>&1 | grep -q 'No players'; then

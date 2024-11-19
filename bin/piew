@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 NAME=$(echo "$1" | rev | cut -d "/" -f 1 | rev)
 
