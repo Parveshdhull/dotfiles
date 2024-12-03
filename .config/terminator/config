@@ -1,6 +1,5 @@
 [global_config]
   inactive_color_offset = 0.9024390243902439
-  suppress_multiple_term_dialog = True
   case_sensitive = False
   invert_search = True
 [keybindings]
