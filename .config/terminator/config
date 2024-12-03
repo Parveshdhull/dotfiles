@@ -12,12 +12,6 @@
     scrollback_infinite = True
     use_system_font = False
     copy_on_selection = True
-  [[New Profile 2]]
-  [[Nerd]]
-    font = Sans Bold 10
-    scrollback_infinite = True
-    use_system_font = False
-    copy_on_selection = True
   [[status]]
 [layouts]
   [[default]]
