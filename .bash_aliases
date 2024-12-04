@@ -2,10 +2,10 @@
 alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' Makefile || cat /dev/null) | sed 's/[^a-zA-Z0-9_-]*$//'\`\" make"
 
 # Navigation
-alias z="cd ~/nebula/data/work/status-mobile && make-complete"
-alias x="cd ~/nebula/data/work/status-go && make-complete"
-alias df='cd ~/nebula/dotfiles'
-alias nc='cd ~/nebula/nixos-config'
+alias z="cd /mnt/data/work/status-mobile && make-complete"
+alias x="cd /mnt/data/work/status-go && make-complete"
+alias df='cd /mnt/data/nebula/dotfiles'
+alias nc='cd /mnt/data/nebula/nixos-config'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
