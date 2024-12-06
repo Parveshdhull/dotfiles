@@ -100,3 +100,4 @@ alias tf="cd '/home/monu/Desktop/ArchFiles/Extras/Text Files'"
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
+alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config /run/agenix/service/rclone/conf'"
