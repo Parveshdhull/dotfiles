@@ -82,9 +82,7 @@ alias scan='scanimage -po "$(date +%s).png"'
 
 # Nix
 alias ns='nix-shell'
-alias bn='sudo nixos-rebuild switch --flake .#nova'
-alias bl='sudo nixos-rebuild switch --flake .#luna'
-alias ba='sudo nixos-rebuild switch --flake .#altair'
+alias bn='sudo nixos-rebuild switch --flake .#`hostname`'
 
 # Security
 alias fj='firejail --noprofile bash'
@@ -101,3 +99,4 @@ alias tf="cd '/home/monu/Desktop/ArchFiles/Extras/Text Files'"
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
 alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config /run/agenix/service/rclone/conf'"
+alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
