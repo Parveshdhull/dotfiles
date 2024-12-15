@@ -2,7 +2,15 @@
 
 mkdir -p ~/.config/pconfig
 LED_BRIGHTNESS="$HOME/.config/pconfig/.brightness"
-SCREEN="DP-2"
+
+# Check if the screen name and action are provided as arguments
+if [ -z "$1" ] || [ -z "$2" ]; then
+  echo "Usage: brightness_new <screen_name> <increase/decrease>"
+  exit 1
+fi
+
+SCREEN="$1"
+ACTION="$2"
 
 if [ ! -s "$LED_BRIGHTNESS" ]; then
   echo "0" >"$LED_BRIGHTNESS"
@@ -26,8 +34,8 @@ adjust_brightness() {
   xrandr --output "$SCREEN" --brightness "$brightness"
 }
 
-case "$1" in
+case "$ACTION" in
 increase) adjust_brightness 0.1 ;;
 decrease) adjust_brightness -0.1 ;;
-*) echo "Usage: brightness_new <increase/decrease>" ;;
+*) echo "Usage: brightness_new <screen_name> <increase/decrease>" ;;
 esac
