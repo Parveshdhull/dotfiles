@@ -12,5 +12,3 @@ eval $(dircolors ~/.dircolors)
 
 # Enable useful shell options
 shopt -s extglob autocd globstar
-
-eval "$(thefuck --alias)"

@@ -15,7 +15,6 @@ alias tt='mkdir -p tt && cd tt'
 alias c="cd -"
 
 # Clear and Display
-alias f="fuck"
 alias k="clear"
 alias p="pwd"
 alias t='trash'
@@ -61,10 +60,6 @@ alias gs="git status"
 alias git-last='git diff-tree --no-commit-id --name-only -r HEAD~0'
 alias git-files='git diff-tree --no-commit-id --name-only -r'
 
-# Tmux
-alias td='tmux detach'
-alias tk='tmux kill-session -t status'
-
 # Make Commands
 alias ml='make lint'
 alias mlf='make lint-fix'
@@ -77,7 +72,7 @@ alias mrr='make run-re-frisk && make android-ports'
 alias maa='make android-ports'
 
 # Software Launchers
-alias pp='firejail portfolio'
+alias pp='portfolio'
 alias scan='scanimage -po "$(date +%s).png"'
 
 # Nix
@@ -87,15 +82,11 @@ alias bl='nixos-rebuild switch --flake .#luna --target-host monu@luna --build-ho
 alias ba='nixos-rebuild switch --flake .#altair --target-host monu@altair --build-host monu@altair --use-remote-sudo'
 
 # Security
-alias fj='firejail --noprofile bash'
 alias sp='nix-shell --pure -p '
 
 # Desktop
 alias d="cd ~/Desktop"
 alias ds="cd ~/Downloads"
-alias lb="cd /home/monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Linux/bin"
-alias pb="cd /home/monu/Desktop/ArchFiles/ExtrasLinux/MyScripts/Python/Mine/bin"
-alias tf="cd '/home/monu/Desktop/ArchFiles/Extras/Text Files'"
 
 # Misc
 alias format="shfmt -i 2 -w "
