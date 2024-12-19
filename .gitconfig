@@ -6,8 +6,6 @@
 	signingkey = F399696520817DE9
 [core]
 	editor = vim
-[credential]
-	helper = store --file=/run/agenix/service/github/credentials
 [commit]
 	gpgsign = true
 [trailer "sign"]

@@ -6,6 +6,7 @@ alias z="cd /mnt/data/work/status-mobile && make-complete"
 alias x="cd /mnt/data/work/status-go && make-complete"
 alias df='cd /mnt/data/nebula/dotfiles'
 alias nc='cd /mnt/data/nebula/nixos-config'
+alias ncs='cd /mnt/data/nebula/nixos-config-secrets'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
