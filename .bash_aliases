@@ -94,3 +94,5 @@ alias format="shfmt -i 2 -w "
 alias xo=xdg-open
 alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config /run/agenix/service/rclone/conf'"
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
+alias combine-images='magick *.jpg combined-images.pdf'
+alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
