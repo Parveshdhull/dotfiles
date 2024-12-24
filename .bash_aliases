@@ -89,10 +89,16 @@ alias sp='nix-shell --pure -p '
 alias d="cd ~/Desktop"
 alias ds="cd ~/Downloads"
 
+# Restic
+alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config /run/agenix/service/rclone/conf' --password-file /run/agenix/service/restic/pass-mega"
+alias nova-local="restic --repo /mnt/storagebox-nova/nova --password-file /run/agenix/service/restic/pass"
+alias nova-storagebox="restic --repo sftp:storagebox:/home/nova --password-file /run/agenix/service/restic/pass"
+alias luna-local="restic --repo /mnt/storagebox-luna/luna --password-file /run/agenix/service/restic/pass"
+alias luna-storagebox="restic --repo sftp:storagebox:/home/luna --password-file /run/agenix/service/restic/pass"
+
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
-alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config /run/agenix/service/rclone/conf'"
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
