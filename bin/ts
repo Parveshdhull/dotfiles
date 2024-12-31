@@ -1,0 +1,16 @@
+#!/bin/sh
+
+PROJ_DIR="/mnt/data/work/status-mobile"
+
+i3-msg 'move container to workspace number 10 ' && i3-msg 'workspace number 10 '
+
+tmux attach -t status || tmux new-session -A -s status \; \
+  send-keys "cd $PROJ_DIR" C-m \; \
+  send-keys "sleep 5 && make run-metro" C-m \; \
+  split-window -v \; \
+  send-keys "cd $PROJ_DIR" C-m \; \
+  send-keys "make run-clojure" C-m \; \
+  split-window -v \; \
+  send-keys "cd $PROJ_DIR" C-m \; \
+  send-keys "sleep 10 && make run-re-frisk && make android-ports" C-m \; \
+  select-layout tiled \;
