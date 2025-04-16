@@ -11,9 +11,9 @@ if [[ $s = '' ]]; then
 fi
 
 if [[ $s == "www"* ]] || [[ $s == "http"* ]] || [[ $s == "com"* ]]; then
-  firefox --new-tab $s >/dev/null 2>&1 &
+  librewolf --new-tab $s >/dev/null 2>&1 &
   disown
 else
-  firefox --private-window https://www.google.com/search?q="$s" >/dev/null 2>&1 &
+  librewolf --private-window https://www.google.com/search?q="$s" >/dev/null 2>&1 &
   disown
 fi
