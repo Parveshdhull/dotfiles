@@ -8,7 +8,7 @@
   switch_to_tab_2 = <Primary><Super>2
 [profiles]
   [[default]]
-    font = Iosevka Term Light 20
+    font = Iosevka Term Light 22
     scrollback_infinite = True
     use_system_font = False
     copy_on_selection = True
