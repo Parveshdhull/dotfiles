@@ -90,11 +90,16 @@ alias d="cd ~/Desktop"
 alias ds="cd ~/Downloads"
 
 # Restic
-alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config /run/agenix/service/rclone/conf' --password-file /run/agenix/service/restic/pass-mega"
-alias nova-local="restic --repo /mnt/storagebox-nova/nova --password-file /run/agenix/service/restic/pass"
-alias nova-storagebox="restic --repo sftp:storagebox:/home/nova --password-file /run/agenix/service/restic/pass"
-alias luna-local="restic --repo /mnt/storagebox-luna/luna --password-file /run/agenix/service/restic/pass"
-alias luna-storagebox="restic --repo sftp:storagebox:/home/luna --password-file /run/agenix/service/restic/pass"
+RESTIC_PASSFILE="/run/agenix/service/restic/pass"
+RCLONE_CONFIG="/run/agenix/service/rclone/conf"
+
+alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE-mega"
+alias nova-storagebox="restic --repo sftp:storagebox:/home/repositories/nova --password-file $RESTIC_PASSFILE"
+alias luna-storagebox="restic --repo sftp:storagebox:/home/repositories/luna --password-file $RESTIC_PASSFILE"
+alias nova-storagebox-nova="restic --repo rclone:storagebox-nova:/repositories/nova -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
+alias nova-storagebox-luna="restic --repo rclone:storagebox-nova:/repositories/luna -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
+alias luna-storagebox-nova="restic --repo rclone:storagebox-luna:/repositories/nova -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
+alias luna-storagebox-luna="restic --repo rclone:storagebox-luna:/repositories/luna -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
 
 # Misc
 alias format="shfmt -i 2 -w "
