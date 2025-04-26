@@ -2,7 +2,7 @@
 
 cd /mnt/data/work/status-mobile || exit 1
 
-echo -e "(ns user\n  (:require\n   [utils.re-frame :as rf]))\n\n(print \"-------- User Namespace is working --------\")" > src/user.cljs
+echo -e "(ns user\n  (:require\n   [utils.re-frame :as rf]))\n\n(print \"-------- User Namespace is working --------\")" >src/user.cljs
 sed -i -E "s/;; load the debugger preload first./user/g" shadow-cljs.edn
 
 emacsclient -n -c src/user.cljs || exit 1

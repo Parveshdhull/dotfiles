@@ -89,18 +89,6 @@ alias sp='nix-shell --pure -p '
 alias d="cd ~/Desktop"
 alias ds="cd ~/Downloads"
 
-# Restic
-RESTIC_PASSFILE="/run/agenix/service/restic/pass"
-RCLONE_CONFIG="/run/agenix/service/rclone/conf"
-
-alias mega="restic -r rclone:mega:storagebox -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE-mega"
-alias nova-storagebox="restic --repo sftp:storagebox:/home/repositories/nova --password-file $RESTIC_PASSFILE"
-alias luna-storagebox="restic --repo sftp:storagebox:/home/repositories/luna --password-file $RESTIC_PASSFILE"
-alias nova-storagebox-nova="restic --repo rclone:storagebox-nova:/repositories/nova -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
-alias nova-storagebox-luna="restic --repo rclone:storagebox-nova:/repositories/luna -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
-alias luna-storagebox-nova="restic --repo rclone:storagebox-luna:/repositories/nova -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
-alias luna-storagebox-luna="restic --repo rclone:storagebox-luna:/repositories/luna -o rclone.program='rclone --config $RCLONE_CONFIG' --password-file $RESTIC_PASSFILE"
-
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open

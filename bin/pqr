@@ -7,5 +7,5 @@ else
 fi
 
 if [[ $s ]]; then
-    qrencode $s -o /tmp/pqr && sxiv /tmp/pqr
+  qrencode $s -o /tmp/pqr && sxiv /tmp/pqr
 fi
