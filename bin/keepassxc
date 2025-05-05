@@ -1,0 +1,11 @@
+#!/run/current-system/sw/bin/bash
+
+if pgrep -x .keepassxc-wrap >/dev/null; then
+  if i3-msg -t get_workspaces | grep -q '"name":"9 ","visible":true'; then
+    i3-msg workspace back_and_forth
+  else
+    i3-msg workspace "9 "
+  fi
+else
+  env QT_SCALE_FACTOR=2 keepassxc &
+fi

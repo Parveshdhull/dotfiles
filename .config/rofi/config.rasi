@@ -1,2 +1,1 @@
-//@theme "/nix/store/75yih3xb71rf7aifs3sbzwcp4bmd8sks-rofi-1.7.5/share/rofi/themes/dmenu.rasi"
-@theme "/nix/store/pfchhfq8dnvjh8pnaws0pspl699z9nfz-rofi-1.7.5/share/rofi/themes/dmenu.rasi"
+@theme "/home/monu/.config/rofi/dmenu.rasi"
