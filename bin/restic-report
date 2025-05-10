@@ -1,0 +1,89 @@
+#!/run/current-system/sw/bin/bash
+
+# Restic config
+RESTIC_PASSFILE="/run/agenix/service/restic/pass"
+RCLONE_CONFIG="/run/agenix/service/rclone/conf"
+
+# Base runner for restic commands
+restic_run() {
+  repo="$1"
+  shift
+  password_file="$1"
+  shift
+  rclone_needed="$1"
+  shift
+
+  cmd=(restic --repo="$repo" --password-file="$password_file")
+
+  if [[ "$rclone_needed" == "yes" ]]; then
+    cmd+=(-o "rclone.program=rclone --config $RCLONE_CONFIG")
+  fi
+
+  "${cmd[@]}" "$@"
+}
+
+# Shortcuts
+mega() { restic_run "rclone:mega:storagebox" "$RESTIC_PASSFILE-mega" yes "$@"; }
+nova-storagebox() { restic_run "sftp:storagebox:/home/repositories/nova" "$RESTIC_PASSFILE" no "$@"; }
+luna-storagebox() { restic_run "sftp:storagebox:/home/repositories/luna" "$RESTIC_PASSFILE" no "$@"; }
+nova-storagebox-nova() { restic_run "rclone:storagebox-nova:/repositories/nova" "$RESTIC_PASSFILE" yes "$@"; }
+nova-storagebox-luna() { restic_run "rclone:storagebox-nova:/repositories/luna" "$RESTIC_PASSFILE" yes "$@"; }
+luna-storagebox-nova() { restic_run "rclone:storagebox-luna:/repositories/nova" "$RESTIC_PASSFILE" yes "$@"; }
+luna-storagebox-luna() { restic_run "rclone:storagebox-luna:/repositories/luna" "$RESTIC_PASSFILE" yes "$@"; }
+
+# Function to report snapshots
+restic-report() {
+  repos=(
+    mega
+    nova-storagebox
+    luna-storagebox
+    nova-storagebox-nova
+    nova-storagebox-luna
+    luna-storagebox-nova
+    luna-storagebox-luna
+  )
+
+  log_file="/home/monu/.config/plogs/restic"
+  log_line=""
+  failed=false
+
+  echo "📦 Snapshot Report for All Repositories"
+  echo "---------------------------------------"
+
+  current_date=$(date +%d-%m-%Y)
+
+  for repo in "${repos[@]}"; do
+    echo ""
+    echo "🔹 $repo"
+
+    snapshots=$($repo snapshots | tail -n +2)
+
+    if [[ $? -eq 0 ]]; then
+      echo "$snapshots" | tail -n 6
+      last_snapshot_date=$(echo "$snapshots" | grep -E '^[0-9a-f]{8}' | tail -n 1 | awk '{print $2}')
+
+      # If the last snapshot date matches today, mark it with a tick (✓), else a cross (✗)
+      if [[ "$last_snapshot_date" == "$(date +%Y-%m-%d)" ]]; then
+        log_line="${log_line} ✓ "
+      else
+        log_line="${log_line} ✗ "
+        failed=true
+      fi
+    else
+      echo "❌ Failed to list snapshots for $repo"
+      failed=true
+    fi
+  done
+
+  if $failed; then
+    color="\${color9}"
+  else
+    color="\${color6}"
+  fi
+
+  log_line="${color}$current_date\${alignr}${log_line}"
+
+  echo -e "$log_line" >>"$log_file"
+}
+
+restic-report
