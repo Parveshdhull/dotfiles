@@ -46,3 +46,6 @@
 
 ;; Enable the dired-find-alternate-file command
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; Auto save buffers on focus out
+(add-hook 'focus-out-hook #'(lambda () (save-some-buffers t)))
