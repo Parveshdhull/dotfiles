@@ -1,0 +1,6 @@
+#!/run/current-system/sw/bin/bash
+
+HOST=$1
+PORT=$2
+
+timeout 1 bash -c "</dev/tcp/$HOST/$PORT" &>/dev/null && echo "up" || echo "down"
