@@ -1,5 +1,13 @@
 #!/run/current-system/sw/bin/bash
 
+current_hour=$(date +%H)
+current_minute=$(date +%M)
+
+if [ "$current_hour$current_minute" -lt "1700" ]; then
+  echo "Current time is before 17:00. Skipping execution."
+  exit 0
+fi
+
 # Restic config
 RESTIC_PASSFILE="/run/agenix/service/restic/pass"
 RCLONE_CONFIG="/run/agenix/service/rclone/conf"

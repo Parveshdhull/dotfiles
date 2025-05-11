@@ -26,7 +26,6 @@ common_config = {
     color7 = 'violet',
     color8 = 'gold',
     color9 = 'red',
-    color10 = 'slategray',
 };
 
 return common_config;
