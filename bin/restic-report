@@ -8,6 +8,14 @@ if [ "$current_hour$current_minute" -lt "1700" ]; then
   exit 0
 fi
 
+current_date=$(date +%d-%m-%Y)
+log_file="/home/monu/.config/plogs/restic"
+
+if grep -q "$current_date" "$log_file"; then
+  echo "Backup already executed today ($current_date). Exiting."
+  exit 0
+fi
+
 # Restic config
 RESTIC_PASSFILE="/run/agenix/service/restic/pass"
 RCLONE_CONFIG="/run/agenix/service/rclone/conf"
@@ -51,14 +59,11 @@ restic-report() {
     luna-storagebox-luna
   )
 
-  log_file="/home/monu/.config/plogs/restic"
   log_line=""
   failed=false
 
   echo "📦 Snapshot Report for All Repositories"
   echo "---------------------------------------"
-
-  current_date=$(date +%d-%m-%Y)
 
   for repo in "${repos[@]}"; do
     echo ""
@@ -79,6 +84,7 @@ restic-report() {
       fi
     else
       echo "❌ Failed to list snapshots for $repo"
+      log_line="${log_line} ✗ "
       failed=true
     fi
   done
