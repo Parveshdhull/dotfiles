@@ -7,5 +7,5 @@ if pgrep -x .keepassxc-wrap >/dev/null; then
     i3-msg workspace "9 "
   fi
 else
-  env QT_SCALE_FACTOR=2 keepassxc &
+  env QT_SCALE_FACTOR=2 /run/current-system/sw/bin/keepassxc &
 fi

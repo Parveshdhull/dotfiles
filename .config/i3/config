@@ -5,7 +5,6 @@ set $mod Mod4
 set $alt Mod1
 set $main_display "DP-2"
 set $secondary_display "DP-3"
-set $ws-dashboard "0 "
 set $ws1 "1 "
 set $ws2 "2 "
 set $ws3 "3 "
