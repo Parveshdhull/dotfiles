@@ -16,6 +16,9 @@ set $ws8 "8 "
 set $ws9 "9 "
 set $ws10 "10 "
 
+## Aliases
+set $entries keepassxc-cli clip -y 1:$YUBIKEY_NEW_SERIAL /mnt/secrets/pass/entries --no-password -q
+
 include ~/.config/i3/keybindings.conf
 include ~/.config/i3/autostart.conf
 include ~/.config/i3/modes.conf
