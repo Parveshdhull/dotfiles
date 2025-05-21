@@ -2,8 +2,6 @@
 alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' Makefile || cat /dev/null) | sed 's/[^a-zA-Z0-9_-]*$//'\`\" make"
 
 # Navigation
-alias z="cd /mnt/data/work/status-mobile && make-complete"
-alias x="cd /mnt/data/work/status-go && make-complete"
 alias df='cd /mnt/data/nebula/dotfiles'
 alias nc='cd /mnt/data/nebula/nixos-config'
 alias ncs='cd /mnt/data/nebula/nixos-config-secrets'
@@ -51,12 +49,10 @@ alias gc='git checkout'
 alias gcc='git commit -m'
 alias gd="git diff"
 alias gf="git fetch"
-alias gfs="git fetch status"
 alias gl="git log"
 alias gll="git log -p"
 alias gr="git restore"
 alias grb="git rebase"
-alias grbd="git rebase status/develop"
 alias gs="git status"
 alias git-last='git diff-tree --no-commit-id --name-only -r HEAD~0'
 alias git-files='git diff-tree --no-commit-id --name-only -r'
@@ -92,7 +88,6 @@ alias ds="cd ~/Downloads"
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
-alias tk='tmux kill-session -t status'
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'

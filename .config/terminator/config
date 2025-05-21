@@ -12,7 +12,6 @@
     scrollback_infinite = True
     use_system_font = False
     copy_on_selection = True
-  [[status]]
 [layouts]
   [[default]]
     [[[child0]]]
@@ -23,7 +22,6 @@
       maximised = False
       fullscreen = False
       size = 1269, 1359
-      title = parvesh_monu@parveshdhull:~/Desktop
       last_active_term = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
       last_active_window = True
     [[[terminal1]]]
@@ -32,46 +30,4 @@
       order = 0
       profile = default
       uuid = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
-  [[status]]
-    [[[child0]]]
-      type = Window
-      parent = ""
-      order = 0
-      position = 2565:365
-      maximised = False
-      fullscreen = False
-      size = 1906, 1034
-      title = parvesh_monu@parveshdhull:~/Desktop
-      last_active_term = 83ad65b6-7554-4cdb-b660-a23022bc354f
-      last_active_window = False
-    [[[child1]]]
-      type = VPaned
-      parent = child0
-      order = 0
-      position = 747
-      ratio = 0.7259475218658892
-    [[[child2]]]
-      type = HPaned
-      parent = child1
-      order = 0
-      position = 950
-      ratio = 0.4997369805365597
-    [[[terminal3]]]
-      type = Terminal
-      parent = child2
-      order = 0
-      profile = default
-      uuid = 83ad65b6-7554-4cdb-b660-a23022bc354f
-    [[[terminal4]]]
-      type = Terminal
-      parent = child2
-      order = 1
-      profile = default
-      uuid = b3f436c2-c5dc-4b1c-a44d-27ea2bfcc32d
-    [[[terminal5]]]
-      type = Terminal
-      parent = child1
-      order = 1
-      profile = default
-      uuid = 3c49ea42-9577-4765-96b4-e8191864c329
 [plugins]

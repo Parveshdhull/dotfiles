@@ -5,8 +5,6 @@ declare -A url_map=(
   ["chat-gpt"]='https://chatgpt.com'
   ["google"]='https://google.com'
   ["navigation"]='https://wix.github.io/react-native-navigation/docs/modal'
-  ["status-mobile"]='https://github.com/status-im/status-mobile'
-  ["status-go"]='https://github.com/status-im/status-go'
   ["reanimated"]='https://docs.swmansion.com/react-native-reanimated/docs/'
   ["youtube"]='https://youtube.com'
 )
