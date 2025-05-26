@@ -3,8 +3,8 @@
 current_hour=$(date +%H)
 current_minute=$(date +%M)
 
-if [ "$current_hour$current_minute" -lt "1500" ]; then
-  echo "Current time is before 15:00. Skipping execution."
+if [ "$current_hour$current_minute" -lt "1430" ]; then
+  echo "Current time is before 14:30. Skipping execution."
   exit 0
 fi
 
