@@ -1,0 +1,7 @@
+#!/run/current-system/sw/bin/bash
+
+TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
+OUTPUT="$HOME/Downloads/extras/clips/audio_clip_$TIMESTAMP.mp3"
+SOURCE="alsa_output.usb-ACTIONS_Pebble_V3-00.analog-stereo.monitor"
+
+pgrep ffmpeg && pkill ffmpeg && thunar $HOME/Downloads/extras/clips || ffmpeg -f pulse -i "$SOURCE" -filter:a "volume=2" -acodec libmp3lame "$OUTPUT"
