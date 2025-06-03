@@ -1,25 +1,28 @@
 #!/run/current-system/sw/bin/bash
 
-current_hour=$(date +%H)
-current_minute=$(date +%M)
-
-if [ "$current_hour$current_minute" -lt "1430" ]; then
-  echo "Current time is before 14:30. Skipping execution."
-  exit 0
-fi
-
-current_date=$(date +%d-%m-%Y)
 log_file="/home/monu/.config/plogs/restic"
+current_date=$(date +%d-%m-%Y)
+current_time=$(date +%H%M)
 
-if grep -q "$current_date" "$log_file"; then
-  echo "Backup already executed today ($current_date). Exiting."
-  exit 0
-fi
+check-sanity() {
+  # Check if before 13:30
+  if [ "$current_time" -lt 1330 ]; then
+    echo "Current time is before 13:30. Skipping execution."
+    return 1
+  fi
 
-source /home/monu/.bash_functions
+  # Check if backup already ran today
+  if grep -q "$current_date" "$log_file" 2>/dev/null; then
+    echo "Backup already executed today ($current_date)."
+    return 1
+  fi
+
+  return 0
+}
 
 # Function to report snapshots
 restic-report() {
+  source /home/monu/.bash_functions
   repos=(
     mega
     nova-storagebox
@@ -70,6 +73,11 @@ restic-report() {
 
   echo -e "$log_line" >>"$log_file"
 }
+
+if ! check-sanity; then
+  echo "Sanity check failed — exiting."
+  exit 1
+fi
 
 restic-report
 conky -c ~/.config/conky/conky.conf
