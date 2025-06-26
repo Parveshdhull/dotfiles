@@ -25,8 +25,8 @@ restic-report() {
   source /home/monu/.bash_functions
   repos=(
     mega
-    nova-storagebox
-    luna-storagebox
+    nova-blazebox
+    luna-blazebox
     nova-storagebox-nova
     nova-storagebox-luna
     luna-storagebox-nova
