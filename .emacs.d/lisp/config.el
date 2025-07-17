@@ -49,3 +49,6 @@
 
 ;; Auto save buffers on focus out
 (add-hook 'focus-out-hook #'(lambda () (save-some-buffers t)))
+
+;; Send the files to your trash and not permanently delete them
+(setq delete-by-moving-to-trash t)
