@@ -13,19 +13,16 @@
 (global-set-key (kbd "<backtab>") 'hs-toggle-hiding)
 
 ;; Function Keys function
-(global-set-key (kbd "<f5>") 'flyspell-mode)
-(global-set-key (kbd "<f6>") 'visual-line-mode)
+(global-set-key (kbd "<f7>") 'flyspell-mode)
+(global-set-key (kbd "<f9>") 'visual-line-mode)
 
 ;; Custom functions
 (global-set-key [f4] 'show-file-name)
 (global-set-key [remap next-buffer] 'my-next-buffer)
 (global-set-key [remap previous-buffer] 'my-previous-buffer)
-;; (global-set-key [(ctrl shift left)]  'my-previous-buffer)
-;; (global-set-key [(ctrl shift right)]  'my-next-buffer)
-;; (global-set-key [(ctrl shift up)]  'move-line-up)
-;; (global-set-key [(ctrl shift down)]  'move-line-down)
+(global-set-key (kbd "<f4>")  'my-previous-buffer)
+(global-set-key (kbd "<f6>")  'my-next-buffer)
+(global-set-key (kbd "<f5>")  'move-line-down)
+(global-set-key (kbd "<f8>")  'move-line-up)
 (global-set-key (kbd "C-d") 'duplicate-line)
 (define-key global-map (kbd "M-l") 'copy-current-line-position-to-clipboard)
-
-;; Unset keys
-(global-unset-key (kbd "C-z"))

@@ -52,3 +52,6 @@
 
 ;; Send the files to your trash and not permanently delete them
 (setq delete-by-moving-to-trash t)
+
+;; Show small documentation in echo area
+(global-eldoc-mode)
