@@ -112,15 +112,9 @@ def validate(line, f, original_content):
 def process_line(line, f, original_content):
     global heading1, heading2
     line = line.strip()
-    if "**" in line:
-        line = line.replace("**", "")
-        line = line.strip()
-        heading2 = line
-    elif "*" in line:
-        line = line.replace("*", "")
-        line = line.strip()
-        heading1 = line
-    else:
+
+    if "***" in line:
+        line = line.replace("*** ", "")
         pattern_once = r'\d+-\d+-\d+\s".+"\s\d+:\d+'
         pattern_yearly = r'\d+-\d+\s".+"\s\d+:\d+'
         pattern_monthly = r'\d+\s".+"\s\d+:\d+'
@@ -137,6 +131,14 @@ def process_line(line, f, original_content):
             matched = False
         if matched:
             validate(line, f, original_content)
+    elif "**" in line:
+        line = line.replace("**", "")
+        line = line.strip()
+        heading2 = line
+    elif "*" in line:
+        line = line.replace("*", "")
+        line = line.strip()
+        heading1 = line
 
 def main_proces():
     reminders_file = Path(reminders)
