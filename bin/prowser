@@ -11,9 +11,9 @@ if [[ $s = '' ]]; then
 fi
 
 if [[ $s == "www"* ]] || [[ $s == "http"* ]] || [[ $s == "com"* ]]; then
-  brave --guest "$s" >/dev/null 2>&1 &
+  brave --profile-directory='Profile 56' "$s" >/dev/null 2>&1 &
   disown
 else
-  brave --guest "? $s" >/dev/null 2>&1 &
+  brave --profile-directory='Profile 56' "? $s" >/dev/null 2>&1 &
   disown
 fi
