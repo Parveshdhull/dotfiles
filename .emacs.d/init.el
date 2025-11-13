@@ -21,6 +21,7 @@
 (load "cleanup.el")
 (load "custom-functions.el")
 (load "dev.el")
+(load "dired-config.el")
 (load "keybindings.el")
 (load "ui.el")
 

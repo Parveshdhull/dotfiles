@@ -15,6 +15,8 @@
         ;; Org Mode Enhancements
         org-bullets       ;; Enhances Org mode headings with Unicode bullets
         emojify           ;; Allows insertion and display of emojis in Emacs
+        ;; Misc
+        transpose-frame
         ))
 
 ;; Initialize package sources

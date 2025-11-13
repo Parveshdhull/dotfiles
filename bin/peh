@@ -1,0 +1,31 @@
+#!/run/current-system/sw/bin/bash
+
+# Extract filename and directory
+NAME=$(basename "$1")
+LOC=$(dirname "$1")
+
+# Move to directory if it’s a local or run path
+if [[ $LOC = *"/home/"* || $LOC = *"/run/"* ]]; then
+  cd "$LOC" || exit
+fi
+
+# Build ordered file list, starting from the selected file
+FILES=($(ls))
+START_INDEX=0
+
+for i in "${!FILES[@]}"; do
+  if [[ "${FILES[$i]}" = "$NAME" ]]; then
+    START_INDEX=$i
+    break
+  fi
+done
+
+ORDERED=("${FILES[@]:$START_INDEX}" "${FILES[@]:0:$START_INDEX}")
+
+# Launch feh with desired options
+printf '%s\n' "${ORDERED[@]}" | feh \
+  --fullscreen \
+  --auto-zoom \
+  --borderless \
+  --start-at "$NAME" \
+  --action1 "mkdir -p ~/.trash && mv %F ~/.trash"

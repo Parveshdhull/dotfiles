@@ -1,0 +1,16 @@
+#!/bin/sh
+
+PROJ_DIR="/mnt/data/work/orglist/"
+
+i3-msg 'move container to workspace number 10 ' && i3-msg 'workspace number 10 '
+
+tmux attach -t orglist || tmux new-session -A -s orglist \; \
+  send-keys "cd $PROJ_DIR" C-m \; \
+  send-keys "sleep 5 && npm start" C-m \; \
+  split-window -v \; \
+  send-keys "cd $PROJ_DIR" C-m \; \
+  send-keys "nix develop" C-m \; \
+  send-keys "emulator -avd Pixel_6_API_35" C-m \; \
+  split-window -v \; \
+  send-keys "cd $PROJ_DIR && nix develop" C-m \; \
+  select-layout tiled \;

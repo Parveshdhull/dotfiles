@@ -2,6 +2,7 @@
 alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' Makefile || cat /dev/null) | sed 's/[^a-zA-Z0-9_-]*$//'\`\" make"
 
 # Navigation
+alias z="cd /mnt/data/work/orglist"
 alias df='cd /mnt/data/nebula/dotfiles'
 alias nc='cd /mnt/data/nebula/nixos-config'
 alias ncs='cd /mnt/data/nebula/nixos-config-secrets'
@@ -89,6 +90,7 @@ alias ds="cd ~/Downloads"
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
+alias tk='tmux kill-session -t orglist'
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
