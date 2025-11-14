@@ -39,9 +39,10 @@ alias biggest="du -h --max-depth=1 | sort -h"
 alias :q="exit"
 
 # SSH Commands
-alias luna='ssh luna'
 alias altair='ssh altair'
 alias astra='ssh astra'
+alias luna='ssh luna'
+alias lyra='ssh lyra'
 
 # Git Aliases
 alias ga="git add -A"
@@ -94,3 +95,4 @@ alias tk='tmux kill-session -t orglist'
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
+alias luna-battery='[[ $(hostname) == luna ]] && [[ -f /sys/class/power_supply/BAT1/capacity ]] && echo "Luna Battery: $(cat /sys/class/power_supply/BAT1/capacity)%"'
