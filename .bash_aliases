@@ -88,6 +88,10 @@ alias sp='nix-shell --pure -p '
 alias d="cd ~/Desktop"
 alias ds="cd ~/Downloads"
 
+# Sound
+alias load-combine-sink='pactl load-module module-combine-sink'
+alias unload-combine-sink='pactl unload-module module-combine-sink'
+
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
