@@ -1,0 +1,25 @@
+#!/run/current-system/sw/bin/bash
+
+# List of git repositories
+REPO_DIRS=(
+    "/mnt/data/nebula/sync"
+    "/mnt/data/nebula/important"
+)
+
+COMMIT_MSG="Automated commit at $(date +"%Y-%m-%d %H:%M:%S")"
+
+for repo in "${REPO_DIRS[@]}"; do
+    if [ -d "$repo/.git" ]; then
+        echo "Processing repository: $repo"
+        cd "$repo" || continue
+        # Check if there are any changes to commit
+        if [[ -n $(git status --porcelain) ]]; then
+            git add -A
+            git commit -m "$COMMIT_MSG"
+        else
+            echo "No changes to commit in repository: $repo"
+        fi
+    else
+        echo "Skipping non-Git directory: $repo"
+    fi
+done
