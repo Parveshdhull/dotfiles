@@ -3,6 +3,7 @@ alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9
 
 # Navigation
 alias z="cd /mnt/data/work/orglist"
+alias nb='cd /mnt/data/nebula'
 alias df='cd /mnt/data/nebula/dotfiles'
 alias nc='cd /mnt/data/nebula/nixos-config'
 alias ncs='cd /mnt/data/nebula/nixos-config-secrets'
@@ -99,4 +100,6 @@ alias tk='tmux kill-session -t orglist'
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
+alias compress-pdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+-dNOPAUSE -dQUIET -dBATCH -sOutputFile=compressed.pdf' # pdf_file
 alias luna-battery='[[ $(hostname) == luna ]] && [[ -f /sys/class/power_supply/BAT1/capacity ]] && echo "Luna Battery: $(cat /sys/class/power_supply/BAT1/capacity)%"'
