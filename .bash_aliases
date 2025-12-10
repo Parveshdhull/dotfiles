@@ -79,8 +79,8 @@ alias scan='scanimage -po "$(date +%s).png"'
 alias ns='nix-shell'
 alias nf='sudo nix flake update'
 alias bn='sudo nixos-rebuild switch --flake .#`hostname`'
-alias bl='nixos-rebuild switch --flake .#luna --target-host monu@luna --build-host monu@luna --use-remote-sudo'
-alias ba='nixos-rebuild switch --flake .#altair --target-host monu@altair --build-host monu@altair --use-remote-sudo'
+alias bl='nixos-rebuild switch --flake .#luna --target-host monu@luna --build-host monu@luna --sudo --ask-sudo-password'
+alias ba='nixos-rebuild switch --flake .#altair --target-host monu@altair --build-host monu@altair --sudo --ask-sudo-password'
 
 # Security
 alias sp='nix-shell --pure -p '
