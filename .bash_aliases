@@ -93,6 +93,14 @@ alias ds="cd ~/Downloads"
 alias load-combine-sink='pactl load-module module-combine-sink'
 alias unload-combine-sink='pactl unload-module module-combine-sink'
 
+# Debug
+alias ss='systemctl status '
+alias sl='systemctl list-units --type=service'
+alias st='systemctl list-units --type=timer'
+alias pu='ps -eo pid,comm,user,args -w'
+alias jr='journalctl -ru '
+alias jf='journalctl -fu '
+
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
