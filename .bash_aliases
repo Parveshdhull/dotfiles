@@ -80,8 +80,8 @@ alias scan='scanimage -po "$(date +%s).png"'
 alias ns='nix-shell'
 alias nf='nix flake update'
 alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo --ask-sudo-password'
-alias bl='nixos-rebuild switch --flake .#luna --target-host monu@luna --build-host monu@luna --sudo --ask-sudo-password'
-alias ba='nixos-rebuild switch --flake .#altair --target-host monu@altair --build-host monu@altair --sudo --ask-sudo-password'
+alias bl='nixos-rebuild switch --flake .#luna --target-host orion@luna --build-host orion@luna --sudo --ask-sudo-password'
+alias ba='nixos-rebuild switch --flake .#altair --target-host orion@altair --build-host orion@altair --sudo --ask-sudo-password'
 
 # Security
 alias sp='nix-shell --pure -p '
