@@ -26,6 +26,7 @@ alias l='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias l.='ls -d .* --color=auto'
 alias j='tree .'
+alias ja='tree -a .'
 
 # Messaging and Editor
 alias msg='zenity --info --text'
@@ -77,8 +78,8 @@ alias scan='scanimage -po "$(date +%s).png"'
 
 # Nix
 alias ns='nix-shell'
-alias nf='sudo nix flake update'
-alias bn='sudo nixos-rebuild switch --flake .#`hostname`'
+alias nf='nix flake update'
+alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo --ask-sudo-password'
 alias bl='nixos-rebuild switch --flake .#luna --target-host monu@luna --build-host monu@luna --sudo --ask-sudo-password'
 alias ba='nixos-rebuild switch --flake .#altair --target-host monu@altair --build-host monu@altair --sudo --ask-sudo-password'
 
@@ -100,6 +101,9 @@ alias st='systemctl list-units --type=timer'
 alias pu='ps -eo pid,comm,user,args -w'
 alias jr='journalctl -ru '
 alias jf='journalctl -fu '
+
+# Orion
+alias or='ssh -t orion@localhost "export HOME=/home/monu; . ~/.bashrc; cd $(pwd); bash -i"'
 
 # Misc
 alias format="shfmt -i 2 -w "

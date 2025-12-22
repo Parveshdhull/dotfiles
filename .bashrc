@@ -7,7 +7,7 @@ source ~/.bash_variables
 set-prompt "$(hostname)"
 
 # Load directory colors
-dircolors -p | sed 's/;42/;01/' >~/.dircolors
+[ ! -f ~/.dircolors ] && dircolors -p | sed 's/;42/;01/' > ~/.dircolors
 eval $(dircolors ~/.dircolors)
 
 # Enable useful shell options
