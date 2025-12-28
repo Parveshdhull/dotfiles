@@ -103,7 +103,7 @@ alias jr='journalctl -ru '
 alias jf='journalctl -fu '
 
 # Orion
-alias or='ssh -t orion@localhost "export HOME=/home/monu; . ~/.bashrc; cd $(pwd); bash -i"'
+alias or='ssh -t orion@localhost "export HOME=/home/$USER; . ~/.bashrc; cd $(pwd); bash -i"'
 
 # Misc
 alias format="shfmt -i 2 -w "
