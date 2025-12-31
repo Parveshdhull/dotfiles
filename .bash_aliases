@@ -1,3 +1,6 @@
+# Default prompt
+PS1="[\033[0;36m\W\[\033[0;37m\]]-> "
+
 # General Aliases
 alias make-complete="complete -W \"\`([[ -r Makefile ]] && grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' Makefile || cat /dev/null) | sed 's/[^a-zA-Z0-9_-]*$//'\`\" make"
 
