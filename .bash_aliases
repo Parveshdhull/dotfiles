@@ -10,6 +10,7 @@ alias nb='cd /mnt/data/nebula'
 alias df='cd /mnt/data/nebula/dotfiles'
 alias nc='cd /mnt/data/nebula/nixos-config'
 alias ncs='cd /mnt/data/nebula/nixos-config-secrets'
+alias hb='cd /mnt/data/work/hubble'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -85,6 +86,8 @@ alias nf='nix flake update'
 alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo --ask-sudo-password'
 alias bl='nixos-rebuild switch --flake .#luna --target-host orion@luna --build-host orion@luna --sudo --ask-sudo-password'
 alias ba='nixos-rebuild switch --flake .#altair --target-host orion@altair --build-host orion@altair --sudo --ask-sudo-password'
+alias vm='./result/bin/run-host5-vm'
+alias nvm='nix flake update secrets && nix build .#nixosConfigurations.hubble.config.system.build.vm && t host5.qcow2 && ./result/bin/run-host5-vm'
 
 # Security
 alias sp='nix-shell --pure -p '
