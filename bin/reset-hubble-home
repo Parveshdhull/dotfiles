@@ -1,0 +1,42 @@
+#!/run/current-system/sw/bin/bash
+
+DOTFILE_DIR=/mnt/data/nebula/dotfiles
+HUBBLE_HOME=/mnt/data/work/hubble/home
+NOVA_HOME=/home/monu
+
+rm -rf "$HUBBLE_HOME"
+mkdir -p "$HUBBLE_HOME"
+
+# List of files/folders to copy
+dotfiles_copy_list() {
+    echo ".bash_aliases"
+    echo ".config/i3"
+    echo ".config/terminator"
+    echo ".local"
+}
+
+nova_copy_list() {
+    echo ".librewolf/pp37szuq.H1"
+}
+
+dotfiles_copy_list | while read -r item; do
+    src="$DOTFILE_DIR/$item"
+    dst="$HUBBLE_HOME/$item"
+    [ -e "$dst" ] && continue
+    mkdir -p "$(dirname "$dst")"
+    cp -r "$src" "$dst"
+done
+
+nova_copy_list | while read -r item; do
+    src="$NOVA_HOME/$item"
+    dst="$HUBBLE_HOME/$item"
+    [ -e "$dst" ] && continue
+    mkdir -p "$(dirname "$dst")"
+    cp -r "$src" "$dst"
+done
+
+### Modifications
+mv $HUBBLE_HOME/.bash_aliases $HUBBLE_HOME/.bashrc
+# Monitor Setup in vm
+echo 'set $main_display "Virtual-1"' >> $HUBBLE_HOME/.config/i3/config
+echo 'exec --no-startup-id xrandr --newmode "2560x1440-120" 497.75 2560 2608 2640 2720 1440 1443 1448 1525 +hsync -vsync; xrandr --addmode Virtual-1 "2560x1440-120"; xrandr --output Virtual-1 --mode "2560x1440-120"' >> $HUBBLE_HOME/.config/i3/autostart.conf
