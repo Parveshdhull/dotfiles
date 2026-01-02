@@ -5,7 +5,9 @@
 (set-fringe-mode 10)     ;; Give some breathing room
 
 ;; Set font
-(set-face-attribute 'default nil :font "Iosevka Comfy" :height 220)
+(defun set-iosevka-comfy-font ()
+  (set-face-attribute 'default nil :font "Iosevka Comfy" :height 220))
+(add-hook 'server-after-make-frame-hook #'set-iosevka-comfy-font)
 
 ;; Set ANSI color faces and names
 (setq ansi-color-faces-vector
