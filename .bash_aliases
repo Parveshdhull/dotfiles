@@ -108,15 +108,6 @@ alias pu='ps -eo pid,comm,user,args -w'
 alias jr='journalctl -ru '
 alias jf='journalctl -fu '
 
-# Scrcpy
-alias connect-scrcpy='scrcpy -e --render-driver=opengl --video-bit-rate=2M --max-size=800 --max-fps=30 --no-audio'
-alias fetch-all-sms='adb shell content query --uri content://sms/inbox --projection "address:body:date"'
-alias connect-rhea-new='adb connect rhea-new.cosmos.vpn:5555'
-alias disconnect-rhea-new='adb disconnect rhea-new.cosmos.vpn:5555'
-alias connect-rhea-old='adb connect rhea-old.cosmos.vpn:5555'
-alias disconnect-rhea-old='adb connect disrhea-old.cosmos.vpn:5555'
-alias tcpip='adb tcpip 5555'
-
 # Orion
 alias or='chmod 750 ~/. && ssh -t orion@localhost "export HOME=/home/$USER; . ~/.bashrc; cd $(pwd); bash -i"'
 
