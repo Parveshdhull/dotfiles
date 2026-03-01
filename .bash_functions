@@ -42,8 +42,8 @@ restic_run() {
 
 # Shortcuts
 mega() { restic_run "rclone:mega:storagebox" "$RESTIC_PASSFILE-mega" yes "$@"; }
-nova-blazebox() { restic_run "rclone:blazebox:blazebox/nova" "$RESTIC_PASSFILE" no "$@"; }
-luna-blazebox() { restic_run "rclone:blazebox:blazebox/luna" "$RESTIC_PASSFILE" no "$@"; }
+nova-blazebox() { restic_run "rclone:blazebox:blazebox/nova" "$RESTIC_PASSFILE" yes "$@"; }
+luna-blazebox() { restic_run "rclone:blazebox:blazebox/luna" "$RESTIC_PASSFILE" yes "$@"; }
 nova-storagebox-nova() { restic_run "rclone:storagebox-nova:/repositories/nova" "$RESTIC_PASSFILE" yes "$@"; }
 nova-storagebox-luna() { restic_run "rclone:storagebox-nova:/repositories/luna" "$RESTIC_PASSFILE" yes "$@"; }
 luna-storagebox-nova() { restic_run "rclone:storagebox-luna:/repositories/nova" "$RESTIC_PASSFILE" yes "$@"; }

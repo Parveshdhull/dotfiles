@@ -11,9 +11,9 @@ if [[ $s = '' ]]; then
 fi
 
 if [[ $s == "www"* ]] || [[ $s == "http"* ]] || [[ $s == "com"* ]]; then
-  librewolf --new-tab $s >/dev/null 2>&1 &
+  librewolf --profile /home/monu/.librewolf/sbu8ja1o.default --private-window $s >/dev/null 2>&1 &
   disown
 else
-  librewolf --private-window https://www.google.com/search?q="$s" >/dev/null 2>&1 &
+  librewolf --profile /home/monu/.librewolf/sbu8ja1o.default --private-window https://www.google.com/search?q="$s" >/dev/null 2>&1 &
   disown
 fi
