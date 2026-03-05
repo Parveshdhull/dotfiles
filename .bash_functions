@@ -11,8 +11,8 @@ set-prompt() {
     *) color="\[\033[0;37m\]" ;;      # Default White
   esac
 
-  if [ "$(whoami)" = "orion" ]; then
-    PS1="[${color}orion@\W\[\033[0;37m\]]-> "
+  if [ "$(whoami)" = "root" ]; then
+    PS1="[${color}root@\W\[\033[0;37m\]]-> "
   else
     PS1="[${color}\W\[\033[0;37m\]]-> "
   fi
@@ -51,5 +51,5 @@ luna-storagebox-luna() { restic_run "rclone:storagebox-luna:/repositories/luna" 
 
 # Sudo
 udo() {
-  ssh orion@localhost "sudo bash -c 'cd $(pwd) && $@'"
+  ssh -t orion@localhost "sudo bash -ic 'cd $(pwd); $@'"
 }
