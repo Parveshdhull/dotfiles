@@ -51,5 +51,5 @@ luna-storagebox-luna() { restic_run "rclone:storagebox-luna:/repositories/luna" 
 
 # Sudo
 udo() {
-  chmod 750 ~/. && ssh -t orion@localhost $"export HOME=/home/$USER; . ~/.bashrc; shopt -s expand_aliases; cd '$(pwd)'; sudo $@"
+  ssh orion@localhost "sudo bash -c 'cd $(pwd) && $@'"
 }

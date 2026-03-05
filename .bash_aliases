@@ -83,9 +83,9 @@ alias scan='scanimage -po "$(date +%s).png"'
 # Nix
 alias ns='nix-shell'
 alias nf='nix flake update'
-alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo --ask-sudo-password'
-alias bl='nixos-rebuild switch --flake .#luna --target-host orion@luna --build-host orion@luna --sudo --ask-sudo-password'
-alias ba='nixos-rebuild switch --flake .#altair --target-host orion@altair --sudo --ask-sudo-password'
+alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo'
+alias bl='nixos-rebuild switch --flake .#luna --target-host orion@luna --build-host orion@luna --sudo'
+alias ba='nixos-rebuild switch --flake .#altair --target-host orion@altair --build-host  orion@altair --sudo'
 alias vm='./result/bin/run-host5-vm'
 alias nvm='nix flake update secrets && nix build .#nixosConfigurations.hubble.config.system.build.vm && t host5.qcow2 && ./result/bin/run-host5-vm'
 
@@ -109,7 +109,7 @@ alias jr='journalctl -ru '
 alias jf='journalctl -fu '
 
 # Orion
-alias or='chmod 750 ~/. && ssh -t orion@localhost "export HOME=/home/$USER; . ~/.bashrc; cd $(pwd); bash -i"'
+alias or='ssh -t orion@localhost "sudo bash -c '\''cd $(pwd) && exec bash -i'\''"'
 
 # Misc
 alias format="shfmt -i 2 -w "
