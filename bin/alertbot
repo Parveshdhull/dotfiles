@@ -34,7 +34,7 @@ allowed_gap = 60*60*24*2  # If program is used after a long time, it will send o
 def get_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("-r", "--reminders-file", dest="reminders", help="Reminders File", required=True)
-    parser.add_argument("-m", "--mode", dest="mode", help="Alert Mode (desktop, signal, both)", required=True)
+    parser.add_argument("-m", "--mode", dest="mode", help="Alert Mode (desktop, signal, email)", required=True)
     arguments = parser.parse_args()
     return arguments
 
@@ -46,7 +46,7 @@ def send_message(message):
 
 def send_notification(message):
     global mode
-    if mode == "desktop" or mode == "both":
+    if mode == "desktop":
         try:
             from pynotifier import NotificationClient, Notification
             from pynotifier.backends import platform
@@ -104,10 +104,12 @@ def validate(line, f, original_content):
         if reminder_timestamp > lastrun_timestamp:
             if (current_timestamp - reminder_timestamp) < allowed_gap:
                 message = heading1 + " -> " + heading2 + "\n" + ("-"*35) + "\n" + message + "\n" + ("-"*35)
-                if mode == "desktop" or mode == "both":
+                if mode == "desktop":
                     send_notification(message)
-                if mode == "signal" or mode == "both":
+                if mode == "signal":
                     send_message(message)
+                if mode == "email":
+                    subprocess.run(['msmtp', os.environ['MY_EMAIL_ADDRESS']], input=f"Subject: Alertbot\n\n{message}", text=True)
 
 def process_line(line, f, original_content):
     global heading1, heading2
