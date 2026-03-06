@@ -2,7 +2,7 @@
 (global-set-key (kbd "C-c t")
 		(lambda () (interactive) (find-file "/mnt/data/nebula/sync/sync-box/notes/pinned/todo")))
 (global-set-key (kbd "C-c r")
-		(lambda () (interactive) (find-file "/mnt/data/nebula/sync/sync-all/notes/pinned/reminders")))
+		(lambda () (interactive) (find-file "/mnt/data/nebula/sync/sync-box/notes/pinned/reminders")))
 
 ;; Misc
 (global-set-key "\C-s" 'swiper)
