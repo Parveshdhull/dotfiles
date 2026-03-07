@@ -24,13 +24,13 @@ check-sanity() {
 restic-report() {
   source /home/monu/.bash_functions
   repos=(
-    mega
-    nova-blazebox
-    luna-blazebox
-    nova-storagebox-nova
-    nova-storagebox-luna
-    luna-storagebox-nova
-    luna-storagebox-luna
+      mega
+      altair-storagebox-nova
+      altair-storagebox-luna
+      luna-storagebox-nova
+      luna-storagebox-luna
+      nova-storagebox-nova
+      nova-storagebox-luna
   )
 
   log_line=""

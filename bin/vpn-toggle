@@ -4,7 +4,7 @@ set -euo pipefail
 mkdir -p ~/.config/pconfig
 TOGGLE=$HOME/.config/pconfig/.vpn
 
-# Route full network
+# Route whole network
 if [ ! -e $TOGGLE ]; then
   touch $TOGGLE
   sudo wg set wg0 peer $WIREGUARD_ALTAIR allowed-ips 0.0.0.0/0
