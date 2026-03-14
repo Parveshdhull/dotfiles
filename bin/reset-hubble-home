@@ -15,20 +15,8 @@ dotfiles_copy_list() {
     echo ".local"
 }
 
-nova_copy_list() {
-    echo ".librewolf/pp37szuq.H1"
-}
-
 dotfiles_copy_list | while read -r item; do
     src="$DOTFILE_DIR/$item"
-    dst="$HUBBLE_HOME/$item"
-    [ -e "$dst" ] && continue
-    mkdir -p "$(dirname "$dst")"
-    cp -r "$src" "$dst"
-done
-
-nova_copy_list | while read -r item; do
-    src="$NOVA_HOME/$item"
     dst="$HUBBLE_HOME/$item"
     [ -e "$dst" ] && continue
     mkdir -p "$(dirname "$dst")"

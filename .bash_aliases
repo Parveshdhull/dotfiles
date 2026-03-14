@@ -115,7 +115,7 @@ alias or='ssh -t orion@localhost "sudo bash -c '\''cd $(pwd) && exec bash -i'\''
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
 alias tk='tmux kill-session -t orglist'
-alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 28 "compressed_$f"; done'
+alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 20 "compressed_$f"; done' # crf - quality-to-file-size ratio
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
 alias compress-pdf='gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
