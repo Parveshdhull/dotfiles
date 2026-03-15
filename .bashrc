@@ -12,3 +12,5 @@ eval $(dircolors ~/.dircolors)
 
 # Enable useful shell options
 shopt -s extglob autocd globstar
+
+[[ $(hostname) == luna ]] && [[ -f /sys/class/power_supply/BAT1/capacity ]] && echo "Luna Battery: $(cat /sys/class/power_supply/BAT1/capacity)%"

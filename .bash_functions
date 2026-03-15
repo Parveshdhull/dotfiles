@@ -13,6 +13,8 @@ set-prompt() {
 
   if [ "$(whoami)" = "root" ]; then
     PS1="[${color}root@\W\[\033[0;37m\]]-> "
+  elif [ "$(whoami)" = "orion" ]; then
+    PS1="[${color}orion@\W\[\033[0;37m\]]-> "
   else
     PS1="[${color}\W\[\033[0;37m\]]-> "
   fi

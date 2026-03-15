@@ -6,8 +6,8 @@ current_time=$(date +%H%M)
 
 check-sanity() {
   # Check if before 13:30
-  if [ "$current_time" -lt 1330 ]; then
-    echo "Current time is before 13:30. Skipping execution."
+  if [ "$current_time" -lt 1500 ]; then
+    echo "Current time is before 15:00. Skipping execution."
     return 1
   fi
 
