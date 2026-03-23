@@ -14,3 +14,11 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (add-hook 'nix-mode-hook 'my-nix-mode-hook)
+
+;; Clippy
+;;;; NOVA
+(if (file-exists-p "/mnt/data/work/hubble/data/clippy")
+    (find-file "/mnt/data/work/hubble/data/clippy"))
+;;;; HUBBLE
+(if (file-exists-p "/mnt/data/clippy")
+    (find-file "/mnt/data/clippy"))
