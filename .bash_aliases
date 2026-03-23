@@ -86,8 +86,8 @@ alias nf='nix flake update'
 alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo'
 alias bl='nixos-rebuild switch --flake .#luna --target-host orion@luna --build-host orion@luna --sudo'
 alias ba='nixos-rebuild switch --flake .#altair --target-host orion@altair --build-host  orion@altair --sudo'
-alias vm='./result/bin/run-host5-vm'
-alias nvm='nix flake update secrets && nix build .#nixosConfigurations.hubble.config.system.build.vm && t host5.qcow2 && ./result/bin/run-host5-vm'
+alias vm='udo ~/bin/enable-hubble-firewall && result/bin/run-host5-vm'
+alias nvm='udo ~/bin/enable-hubble-firewall && nix flake update secrets && nix build .#nixosConfigurations.hubble.config.system.build.vm && t host5.qcow2 && ./result/bin/run-host5-vm'
 
 # Security
 alias sp='nix-shell --pure -p '

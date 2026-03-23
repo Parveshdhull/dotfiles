@@ -1,0 +1,10 @@
+#!/run/current-system/sw/bin/bash
+
+iptables -C INPUT -i virbr0 -p udp -m multiport --dports 53,67 -j ACCEPT 2>/dev/null || \
+iptables -I INPUT 1 -i virbr0 -p udp -m multiport --dports 53,67 -j ACCEPT
+
+iptables -C INPUT -i virbr0 -j REJECT --reject-with icmp-admin-prohibited 2>/dev/null || \
+iptables -I INPUT 2 -i virbr0 -j REJECT --reject-with icmp-admin-prohibited
+
+iptables -C FORWARD -i virbr0 -o wg0 -j REJECT 2>/dev/null || \
+iptables -I FORWARD 1 -i virbr0 -o wg0 -j REJECT
