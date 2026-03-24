@@ -1,0 +1,33 @@
+# Default prompt
+PS1="[\[\033[0;36m\]\W\[\033[0;37m\]]-> "
+
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias tt='mkdir -p tt && cd tt'
+alias c="cd -"
+
+# Clear and Display
+alias k="clear"
+alias p="pwd"
+alias t='trash'
+
+# Listing
+alias ls='ls --color=auto'
+alias l='ls --color=auto'
+alias ll='ls -lah --color=auto'
+alias l.='ls -d .* --color=auto'
+alias j='tree .'
+alias ja='tree -a .'
+
+# Messaging and Editor
+alias emc="emacsclient -n -c"
+
+# Searching and File Management
+alias grep='grep --color=auto'
+alias g='grep --color=auto'
+alias biggest="du -h --max-depth=1 | sort -h"
+alias :q="exit"

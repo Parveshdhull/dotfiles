@@ -22,7 +22,7 @@ check-sanity() {
 
 # Function to report snapshots
 restic-report() {
-  source /home/monu/.bash_functions
+  source /home/monu/.bash/bash_functions
   repos=(
       mega
       altair-storagebox-nova

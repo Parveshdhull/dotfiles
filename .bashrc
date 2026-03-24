@@ -1,7 +1,8 @@
 # Load user-specific aliases and functions
-source ~/.bash_aliases
-source ~/.bash_functions
-source ~/.bash_variables
+source ~/.bash/base
+source ~/.bash/bash_aliases
+source ~/.bash/bash_functions
+source ~/.bash/bash_variables
 
 # Set prompt to the hostname
 set-prompt "$(hostname)"

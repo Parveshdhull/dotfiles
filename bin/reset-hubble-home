@@ -3,12 +3,13 @@
 DOTFILE_DIR=/mnt/data/nebula/dotfiles
 HUBBLE_HOME=/mnt/data/work/hubble/home
 
-rm -rf "$HUBBLE_HOME"
-mkdir -p "$HUBBLE_HOME"
+# rm -rf "$HUBBLE_HOME"
+# mkdir -p "$HUBBLE_HOME"
 
 # List of files/folders to copy
 dotfiles_copy_list() {
-    echo ".bash_aliases"
+    echo ".bash/base"
+    echo "bin/keys"
     echo ".config/i3"
     echo ".emacs.d"
     echo ".config/terminator"
@@ -24,8 +25,10 @@ dotfiles_copy_list | while read -r item; do
 done
 
 ### Modifications
-mv $HUBBLE_HOME/.bash_aliases $HUBBLE_HOME/.bashrc
+mv $HUBBLE_HOME/.bash/base $HUBBLE_HOME/.bashrc
 # Monitor Setup in vm
 echo 'set $main_display "Virtual-1"' >> $HUBBLE_HOME/.config/i3/config
 # 2540 width, 1330 height
 echo 'exec --no-startup-id xrandr --newmode "2560x1440-120" 497.75 2540 2608 2640 2720 1330 1443 1448 1525 +hsync -vsync; xrandr --addmode Virtual-1 "2560x1440-120"; xrandr --output Virtual-1 --mode "2560x1440-120"' >> $HUBBLE_HOME/.config/i3/autostart.conf
+# Fix route
+cat /mnt/data/work/hubble/data/fix-route >> $HUBBLE_HOME/.bashrc
