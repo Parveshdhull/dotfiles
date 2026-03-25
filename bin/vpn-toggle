@@ -1,18 +1,23 @@
 #!/run/current-system/sw/bin/bash
 set -euo pipefail
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root"
+   exit 1
+fi
+
 mkdir -p ~/.config/pconfig
 TOGGLE=$HOME/.config/pconfig/.vpn
 
 # Route whole network
 if [ ! -e $TOGGLE ]; then
   touch $TOGGLE
-  sudo wg set wg0 peer $WIREGUARD_ALTAIR allowed-ips 0.0.0.0/0
-  sudo ip route add default dev wg0
-  sudo ip route add $SERVER_IP via 192.168.1.1 dev enp7s0
+  wg set wg0 peer $WIREGUARD_ALTAIR allowed-ips 0.0.0.0/0
+  ip route add default dev wg0
+  ip route add $SERVER_IP via 192.168.1.1 dev enp7s0
 else # Split network
   trash $TOGGLE
-  sudo wg set wg0 peer $WIREGUARD_ALTAIR allowed-ips 10.100.0.1/32,10.100.0.4/32
-  sudo ip route del default dev wg0
-  sudo ip route del $SERVER_IP via 192.168.1.1 dev enp7s0
+  wg set wg0 peer $WIREGUARD_ALTAIR allowed-ips 10.100.0.1/32,10.100.0.4/32
+  ip route del default dev wg0
+  ip route del $SERVER_IP via 192.168.1.1 dev enp7s0
 fi
