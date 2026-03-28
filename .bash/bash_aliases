@@ -78,9 +78,6 @@ alias pu='ps -eo pid,comm,user,args -w'
 alias jr='journalctl -ru '
 alias jf='journalctl -fu '
 
-# Orion
-alias or='ssh -t orion@localhost "sudo bash -c '\''cd $(pwd) && exec bash -i'\''"'
-
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open

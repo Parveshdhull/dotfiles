@@ -3,8 +3,8 @@
 DOTFILE_DIR=/mnt/data/nebula/dotfiles
 HUBBLE_HOME=/mnt/data/work/hubble/home
 
-# rm -rf "$HUBBLE_HOME"
-# mkdir -p "$HUBBLE_HOME"
+rm -rf "$HUBBLE_HOME"
+mkdir -p "$HUBBLE_HOME"
 
 # List of files/folders to copy
 dotfiles_copy_list() {

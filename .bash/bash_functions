@@ -53,5 +53,5 @@ nova-storagebox-luna() { restic_run "rclone:storagebox-nova:/repositories/luna" 
 
 # Sudo
 udo() {
-  ssh -t orion@localhost "sudo bash -ic 'cd $(pwd); $@'"
+  su orion -c "sudo $*"
 }
