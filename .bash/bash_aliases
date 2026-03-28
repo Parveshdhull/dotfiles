@@ -53,7 +53,7 @@ alias scan='scanimage -po "$(date +%s).png"'
 # Nix
 alias ns='nix-shell'
 alias nf='nix flake update'
-alias bn='nixos-rebuild switch --flake .#nova --target-host orion@localhost --sudo'
+alias bn='udo nixos-rebuild switch --flake .#nova'
 alias bl='nixos-rebuild switch --flake .#luna --target-host orion@luna --build-host orion@luna --sudo'
 alias ba='nixos-rebuild switch --flake .#altair --target-host orion@altair --build-host  orion@altair --sudo'
 alias vm='udo ~/bin/enable-hubble-firewall && result/bin/run-host5-vm'
