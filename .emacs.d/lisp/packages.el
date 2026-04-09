@@ -36,6 +36,14 @@
   (unless (package-installed-p package)
     (package-install package)))
 
+;; (use-package gptel
+;;   :ensure t
+;;   :config
+;;   (setq-default gptel-backend (gptel-make-ollama "Ollama"
+;;                                  :host "localhost:11434"
+;;                                  :stream t
+;;                                  :models '("llama3.2" "deepseek-coder"))))
+
 ;; Enable ivy-mode
 (use-package ivy
   :ensure t
