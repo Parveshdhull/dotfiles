@@ -12,6 +12,7 @@ dotfiles_copy_list() {
     echo "bin/keys"
     echo "bin/vpn-toggle"
     echo ".config/i3"
+    echo ".config/rofi"
     echo ".emacs.d"
     echo ".config/terminator"
     echo ".local"
