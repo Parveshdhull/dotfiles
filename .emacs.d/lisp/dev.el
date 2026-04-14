@@ -17,8 +17,8 @@
 
 ;; Clippy
 ;;;; NOVA
-(if (file-exists-p "/mnt/data/work/hubble/data/clippy")
-    (find-file "/mnt/data/work/hubble/data/clippy"))
+(if (file-exists-p "/mnt/data/nebula/not-important/work/hubble/data/clippy")
+    (find-file "/mnt/data/nebula/not-important/work/hubble/data/clippy"))
 ;;;; HUBBLE
 (if (file-exists-p "/mnt/data/clippy")
     (find-file "/mnt/data/clippy"))

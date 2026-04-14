@@ -1,0 +1,12 @@
+#!/run/current-system/sw/bin/bash
+
+H=$(hostname)
+
+if [ "$H" = "nova" ]; then
+    F="/mnt/data/nebula/not-important/work/hubble/data/clippy"
+    xclip -o -sel prim > "$F"
+else
+    F="/mnt/data/clippy"
+    xclip -sel clip "$F"
+    echo "" > $F
+fi
