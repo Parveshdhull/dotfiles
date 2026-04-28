@@ -81,7 +81,7 @@ alias jf='journalctl -fu '
 # Misc
 alias format="shfmt -i 2 -w "
 alias xo=xdg-open
-alias tk='tmux kill-session -t orglist'
+alias tk='tmux kill-session -t work'
 alias compress-videos='for f in *.mp4; do ffmpeg -i "$f" -vcodec libx265 -crf 20 "compressed_$f"; done' # crf - quality-to-file-size ratio
 alias combine-images='magick *.jpg combined-images.pdf'
 alias combine-pdfs='pdftk *.pdf cat output combined.pdf'
